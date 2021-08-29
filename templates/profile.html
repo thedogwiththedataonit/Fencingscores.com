@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contents="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head> 
+
+
+<body>
+    <header> 
+        <a href="/" class="logo">USFA Fencing Results</a>
+        <hr style="width:100%", size="1", color=white>  
+    </header>
+
+    <div class="container3">
+        <div class="containerhead">
+            <div class="text1">
+                <h2> {{ name }} </h2>
+    
+                {% for i in range(club_len) %}
+                <p>{{ club[i] }}
+                    {% endfor %}
+                
+                </p>
+                
+            </div>
+    
+            {% if nation == "USA" %}
+            <img class="USAFLAG" style="vertical-align: middle;"src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+            {% else %}
+            <img class="CANFLAG" style="vertical-align: middle;" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg">
+            {% endif %}
+    
+            <div class="roundedboxper">
+                <br>
+                <p> Ranking </p>
+                <p> #NUMBER# </p>
+            </div>
+            <div class="roundedboxper">
+                <br>
+                <p> Win Percentage</p>
+                <p> {{ win_percentage }} </p>
+            </div>
+        </div>
+
+        
+        <div class="accordion">
+            {% for i in range(len) %}
+            <input type="radio" name="select" class="accordion-select" checked />
+            <div class="accordion-title"><span>{{ attended_comps[i] }}</span></div>
+            <div class="accordion-content">
+                
+
+                <div class="content_div">
+                    <div class="content_header">
+                        <div class="text2">
+                            <h2>Won Against
+                                <hr style="width:100%", size="1", color=white> 
+                            </h2>
+                             
+                        </div>
+                        <div class="text2">
+                            <h2>Lost Against
+                                <hr style="width:100%", size="1", color=white> 
+                            </h2>
+                             
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="content_div_WL">
+
+                    <div class="content_name_score">
+                        {% for j in range(win_list_len[i]) %}
+                        <div class="content_names">
+                            <div class="text2">
+                                <a href="/{{ win_fencers_list[i][j] }}">{{ win_fencers_list[i][j] }}</a> 
+                            </div>
+                        </div>
+                        
+                        <div class="content_scores">
+                            <div class="text2_win">
+                                <h2> {{ win_scores_list[i][j] }} </h2> 
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                    
+                    <div class="content_name_score">
+                        {% for j in range(loss_list_len[i]) %}
+                        <div class="content_names">
+                            <div class="text2">
+                                <a href="/{{ loss_fencers_list[i][j] }}">{{ loss_fencers_list[i][j] }}</a> 
+                            </div>
+                        </div>
+                        
+                        <div class="content_scores">
+                            <div class="text2_loss">
+                                <h2> {{ loss_scores_list[i][j] }} </h2> 
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+
+                    
+                </div>
+                <br>
+            </div> 
+            {% endfor %}
+        </div> 
+
+
+    <div class=container4>
+
+    </div>
+             
+          
+    </div>
+
+
+    
+</body>
+
+</html>
