@@ -43,6 +43,8 @@ def user(usr):
     win_percentage = str(win_p) + "%"
         
     attended_comps = name_document.get('Competitions')
+    attended_cats = name_document.get("Category")
+
     club = name_document.get("Club")
     nation = name_document.get("Nation")
 
@@ -55,27 +57,34 @@ def user(usr):
     loss_scores_list = []
     loss_list_len = []
 
-    for comp in attended_comps:
-        db_comp = cluster["USFA_JME"]  #MAKE DYNAMIC TO MORE CATEGORIES
-        collection_comp = db_comp[comp]
-        fencer_document = collection_comp.find_one({"Name":usr})
-        #print(fencer_document)
+    for category in attended_cats:
+        db_comp = cluster[category]
+        for comp in attended_comps:
+            try:
+                  #MAKE DYNAMIC TO MORE CATEGORIES
+                collection_comp = db_comp[comp]
+                #print(comp)
+                fencer_document = collection_comp.find_one({"Name":usr})
+                #print(fencer_document)
 
-        win_fencers = fencer_document.get('win_fencers')
-        win_fencers_list.append(win_fencers)
+                win_fencers = fencer_document.get('win_fencers')
+                #print(win_fencers)
+                win_fencers_list.append(win_fencers)
 
-        win_scores = fencer_document.get('win_scores')
-        win_list_len.append(len(win_scores))
-        win_scores_list.append(win_scores)
+                win_scores = fencer_document.get('win_scores')
+                win_list_len.append(len(win_scores))
+                win_scores_list.append(win_scores)
 
-            
+                    
 
-        loss_fencers = fencer_document.get('loss_fencers')
-        loss_fencers_list.append(loss_fencers)
+                loss_fencers = fencer_document.get('loss_fencers')
+                loss_fencers_list.append(loss_fencers)
 
-        loss_scores = fencer_document.get('loss_scores')
-        loss_list_len.append(len(loss_scores))
-        loss_scores_list.append(loss_scores)
+                loss_scores = fencer_document.get('loss_scores')
+                loss_list_len.append(len(loss_scores))
+                loss_scores_list.append(loss_scores)
+            except:
+                continue
 
         
 
