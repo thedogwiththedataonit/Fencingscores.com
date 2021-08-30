@@ -56,6 +56,7 @@ def user(usr):
     loss_fencers_list = []
     loss_scores_list = []
     loss_list_len = []
+    indicator_list = []
 
     for category in attended_cats:
         db_comp = cluster[category]
@@ -83,6 +84,10 @@ def user(usr):
                 loss_scores = fencer_document.get('loss_scores')
                 loss_list_len.append(len(loss_scores))
                 loss_scores_list.append(loss_scores)
+
+                indicator = fencer_document.get('Indicator')
+                indicator_list.append(indicator)
+
             except:
                 continue
 
@@ -106,6 +111,7 @@ def user(usr):
                                 loss_fencers_list = loss_fencers_list,
                                 loss_list_len = loss_list_len,
                                 loss_scores_list = loss_scores_list,
+                                indicator_list = indicator_list,
 
                                 )
    
