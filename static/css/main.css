@@ -122,6 +122,8 @@ header .logo
   letter-spacing: -1px;
   word-spacing: 10px;
   margin-bottom: 30px ;
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
 }
 

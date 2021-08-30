@@ -57,6 +57,9 @@ def user(usr):
     loss_scores_list = []
     loss_list_len = []
     indicator_list = []
+    touch_scored_list = []
+    touch_rec_list = []
+
 
     for category in attended_cats:
         db_comp = cluster[category]
@@ -88,6 +91,12 @@ def user(usr):
                 indicator = fencer_document.get('Indicator')
                 indicator_list.append(indicator)
 
+                touch_scored = fencer_document.get("Total_scored")
+                touch_scored_list.append(touch_scored)
+
+                touch_rec = fencer_document.get("Total_Received")
+                touch_rec_list.append(touch_rec)
+
             except:
                 continue
 
@@ -112,6 +121,8 @@ def user(usr):
                                 loss_list_len = loss_list_len,
                                 loss_scores_list = loss_scores_list,
                                 indicator_list = indicator_list,
+                                touch_scored_list = touch_scored_list,
+                                touch_rec_list = touch_rec_list
 
                                 )
    
