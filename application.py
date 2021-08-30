@@ -63,7 +63,7 @@ def user(usr):
             try:
                   #MAKE DYNAMIC TO MORE CATEGORIES
                 collection_comp = db_comp[comp]
-                #print(comp)
+                # print(comp)
                 fencer_document = collection_comp.find_one({"Name":usr})
                 #print(fencer_document)
 

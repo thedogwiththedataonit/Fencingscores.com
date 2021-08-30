@@ -490,9 +490,9 @@ header .logo
 .foilfencing {
   position:relative;
   width: auto;
-  height: 600px;
+  height: 500px;
   left:40%;
-  top:-10%;
+  top:-20%;
   filter:brightness(60%);
 }
 
