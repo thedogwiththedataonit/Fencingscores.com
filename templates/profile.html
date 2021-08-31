@@ -50,7 +50,42 @@
             </div>
         </div>
 
-        
+        <!-- create additional /cadet or /junior next to name, new template call, maybe yeah -->
+        <div class="container_nav">
+            <nav class="slidemenu">
+    
+                <!-- Item 1 -->
+                <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+                <label for="slide-item-1"><p class="icon">14</p><span>Y-14</span></label>
+                
+                <!-- Item 2 -->
+                <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+                <label for="slide-item-2"><p class="icon">C</p><span>Cadet</span></label>
+                
+                <!-- Item 3 -->
+                <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+                <label for="slide-item-3"><p class="icon">J</p><span>Junior</span></label>
+                
+                <!-- Item 4 -->
+                <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+                <label for="slide-item-4"><p class="icon">1</p><span>Division 1</span></label>
+
+                <input type="radio" name="slideItem" id="slide-item-5" class="slide-toggle"/>
+                <label for="slide-item-5"><p class="icon">2</p><span>Division 2</span></label>
+
+                <input type="radio" name="slideItem" id="slide-item-6" class="slide-toggle"/>
+                <label for="slide-item-6"><p class="icon">3</p><span>Division 3</span></label>
+                
+                <div class="clear"></div>
+                
+                <!-- Bar -->
+            
+                
+            </nav>
+            <div class="slider"></div>
+            <div class="bar"></div>
+        </div>
+
         <div class="accordion">
             {% for i in range(len) %}
             <input type="radio" name="select" class="accordion-select" checked />
@@ -123,7 +158,7 @@
                                 <hr style="width:100%", size="1", color=white> 
                             </h2>
                             <div class="content_name_score">
-                                <h2> {{ touch_scored_list[i] }} </h2>
+                                <h2> +{{ touch_scored_list[i] }} </h2>
                             </div>
                         </div>
 
@@ -132,7 +167,7 @@
                                 <hr style="width:100%", size="1", color=white> 
                             </h2>
                             <div class="content_name_score">
-                                <h2> {{ touch_rec_list[i] }} </h2>
+                                <h2> -{{ touch_rec_list[i] }} </h2>
                             </div>
                         </div>
                     </div>
