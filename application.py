@@ -38,7 +38,7 @@ def user(usr):
     collection = db["Names"]
 
     name_document = collection.find_one({"Name":usr})
-    win_pre = (name_document.get('Pool_win_percentage') )
+    win_pre = name_document.get('Pool_win_percentage')
     win_p = round(win_pre, 2) * 100
     win_percentage = str(win_p) + "%"
         
@@ -48,7 +48,8 @@ def user(usr):
     club = name_document.get("Club")
     nation = name_document.get("Nation")
 
-        #How do I send pool data?? DEFINE WIN LOSS BEFORE SO ITS IN MONGODB
+    #Organize by competition category within the python call, so sort the competitions by category, all values, including wins score etc
+
     win_fencers_list = []
     win_scores_list = []
     win_list_len = []
