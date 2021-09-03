@@ -21,6 +21,7 @@ def main():
         try:
             name_document = collection.find_one({"Name":cap_usr})
             win_pre = (name_document.get('Pool_win_percentage') )
+
             return redirect(url_for("user", usr=cap_usr))
         except:
             return render_template('index.html', error="No Name")
@@ -126,7 +127,11 @@ def user(usr):
                                 touch_rec_list = touch_rec_list
 
                                 )
-   
+
+
+
+
+
 
 if __name__ == "__main__":
     application.run(debug=True) #turn debug off for prodcution deployment
