@@ -30,8 +30,7 @@ def main():
         return render_template('index.html')
 
 
-
-@application.route("/<usr>")
+@application.route("/<usr>", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
 def user(usr):
     
     cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where()) #MAC LINE
@@ -63,49 +62,166 @@ def user(usr):
     touch_rec_list = []
 
 
+    all_comps = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    y14 = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    cadet = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    junior = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    div1 = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    div2 = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+    div3 = {
+        "attended_comps": [],
+        "win_fencer_list": [],
+        "win_fencer_len": 0,
+        "win_scores_list": [],
+        "loss_fencer_list": [],
+        "loss_fencer_len": 0,
+        "loss_score_list": [],
+        "indicator_list": [],
+        "touch_scored_list": [],
+        "touch_rec_list": [],
+    }
+
+
+    #so far, use dictionaries to speciffy the types so if can be indexed and clicked upon
+
+    #how do you add more apges and go deeper? <usr>/all or <usr>/y14
+
     for category in attended_cats:
         db_comp = cluster[category]
+
         for comp in attended_comps:
+            
+            print(comp)
+            if comp[:5] == "Junior": #doesnt work?
+                print("juniors")
+            
             try:
                   #MAKE DYNAMIC TO MORE CATEGORIES
                 collection_comp = db_comp[comp]
+
                 # print(comp)
                 fencer_document = collection_comp.find_one({"Name":usr})
                 #print(fencer_document)
 
                 win_fencers = fencer_document.get('win_fencers')
                 #print(win_fencers)
+                
                 win_fencers_list.append(win_fencers)
+                all_comps["win_fencer_list"].append(win_fencers)
 
                 win_scores = fencer_document.get('win_scores')
                 win_list_len.append(len(win_scores))
+                all_comps["win_fencer_len"] = len(win_scores)
+
                 win_scores_list.append(win_scores)
+                all_comps["win_scores_list"].append(win_scores)
 
                     
 
                 loss_fencers = fencer_document.get('loss_fencers')
                 loss_fencers_list.append(loss_fencers)
+                all_comps["loss_fencer_list"].append(loss_fencers)
 
                 loss_scores = fencer_document.get('loss_scores')
                 loss_list_len.append(len(loss_scores))
+                all_comps["loss_fencer_len"] = len(loss_scores)
+
                 loss_scores_list.append(loss_scores)
+                all_comps["loss_score_list"].append(loss_scores)
 
                 indicator = fencer_document.get('Indicator')
                 indicator_list.append(indicator)
+                all_comps["indicator_list"].append(indicator)
 
                 touch_scored = fencer_document.get("Total_scored")
                 touch_scored_list.append(touch_scored)
+                all_comps["touch_scored_list"].append(touch_scored)
 
                 touch_rec = fencer_document.get("Total_Received")
                 touch_rec_list.append(touch_rec)
+                all_comps["touch_rec_list"].append(touch_rec)
 
             except:
                 continue
 
         
 
-    print(win_list_len)
+    
         
+
+    #USE DICTIONARIESSS!!!!!!
 
 
     return render_template('profile.html', 
@@ -116,20 +232,21 @@ def user(usr):
                                 club=club, 
                                 club_len=len(club), 
                                 nation=nation,
+                                
                                 win_fencers_list = win_fencers_list,
                                 win_list_len = win_list_len,
                                 win_scores_list = win_scores_list,
+
                                 loss_fencers_list = loss_fencers_list,
                                 loss_list_len = loss_list_len,
                                 loss_scores_list = loss_scores_list,
+
                                 indicator_list = indicator_list,
                                 touch_scored_list = touch_scored_list,
-                                touch_rec_list = touch_rec_list
-
+                                touch_rec_list = touch_rec_list,
+                                
+                                all_comps=all_comps
                                 )
-
-
-
 
 
 
