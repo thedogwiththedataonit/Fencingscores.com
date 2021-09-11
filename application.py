@@ -63,12 +63,13 @@ def user(usr):
 
 
     all_comps = {
-        "attended_comps": [],
+        "attended_comps": attended_comps,
+        "len_attended_comps": len(attended_comps),
         "win_fencer_list": [],
-        "win_fencer_len": 0,
-        "win_scores_list": [],
+        "win_fencer_len": [],
+        "win_score_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -78,10 +79,10 @@ def user(usr):
     y14 = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -91,10 +92,10 @@ def user(usr):
     cadet = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -104,10 +105,10 @@ def user(usr):
     junior = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -117,10 +118,10 @@ def user(usr):
     div1 = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -130,10 +131,10 @@ def user(usr):
     div2 = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -143,10 +144,10 @@ def user(usr):
     div3 = {
         "attended_comps": [],
         "win_fencer_list": [],
-        "win_fencer_len": 0,
+        "win_fencer_len": [],
         "win_scores_list": [],
         "loss_fencer_list": [],
-        "loss_fencer_len": 0,
+        "loss_fencer_len": [],
         "loss_score_list": [],
         "indicator_list": [],
         "touch_scored_list": [],
@@ -183,7 +184,7 @@ def user(usr):
 
                 win_scores = fencer_document.get('win_scores')
                 win_list_len.append(len(win_scores))
-                all_comps["win_fencer_len"] = len(win_scores)
+                all_comps["win_fencer_len"].append(len(win_scores))
 
                 win_scores_list.append(win_scores)
                 all_comps["win_scores_list"].append(win_scores)
@@ -196,7 +197,7 @@ def user(usr):
 
                 loss_scores = fencer_document.get('loss_scores')
                 loss_list_len.append(len(loss_scores))
-                all_comps["loss_fencer_len"] = len(loss_scores)
+                all_comps["loss_fencer_len"].append(len(loss_scores))
 
                 loss_scores_list.append(loss_scores)
                 all_comps["loss_score_list"].append(loss_scores)
@@ -224,6 +225,7 @@ def user(usr):
     #USE DICTIONARIESSS!!!!!!
 
 
+    print(all_comps)
     return render_template('profile.html', 
                                 name=usr, 
                                 win_percentage=win_percentage, 

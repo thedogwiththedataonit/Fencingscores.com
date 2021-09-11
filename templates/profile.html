@@ -100,9 +100,9 @@
         </div>
 
         <div class="accordion">
-            {% for i in range(len) %}
+            {% for i in range(all_comps["len_attended_comps"]) %}
             <input type="radio" name="select" class="accordion-select" checked />
-            <div class="accordion-title"><span>{{ attended_comps[i] }}</span></div>
+            <div class="accordion-title"><span>{{ all_comps["attended_comps"][i] }}</span></div>
             <div class="accordion-content">
                 
 
@@ -114,16 +114,16 @@
                             </h2>
 
                             <div class="content_name_score">
-                                {% for j in range(win_list_len[i]) %}
+                                {% for j in range(all_comps["win_fencer_len"][i]) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a href="/{{ win_fencers_list[i][j] }}">{{ win_fencers_list[i][j] }}</a> 
+                                        <a href="/{{ win_fencers_list[i][j] }}">{{ all_comps["win_fencer_list"][i][j] }}</a> 
                                     </div>
                                 </div>
                                 
                                 <div class="content_scores">
                                     <div class="text2_win">
-                                        <h2> {{ win_scores_list[i][j] }} </h2> 
+                                        <h2> {{ all_comps["win_score7_list"][i][j] }} </h2> 
                                     </div>
                                 </div>
                                 <br>
@@ -138,16 +138,16 @@
                             </h2>
                              
                             <div class="content_name_score">
-                                {% for j in range(loss_list_len[i]) %}
+                                {% for j in range(all_comps["loss_fencer_len"][i]) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a href="/{{ loss_fencers_list[i][j] }}">{{ loss_fencers_list[i][j] }}</a> 
+                                        <a href="/{{ loss_fencers_list[i][j] }}">{{ all_comps["loss_fencer_list"][i][j] }}</a> 
                                     </div>
                                 </div>
                                 
                                 <div class="content_scores">
                                     <div class="text2_loss">
-                                        <h2> {{ loss_scores_list[i][j] }} </h2> 
+                                        <h2> {{ all_comps["loss_score_list"][i][j] }} </h2> 
                                     </div>
                                 </div>
                                 <br>

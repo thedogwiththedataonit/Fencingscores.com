@@ -81,6 +81,11 @@ header .logo
   object-fit: cover;
   opacity: 0.8;
 }
+
+.video{
+  filter: blur(3px) saturate(100%);
+  
+}
 .overlay
 {
   position: absolute;
