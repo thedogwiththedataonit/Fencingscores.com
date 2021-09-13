@@ -83,7 +83,7 @@ header .logo
 }
 
 .video{
-  filter: blur(3px) saturate(100%);
+  filter: blur(6px) saturate(100%);
   
 }
 .overlay

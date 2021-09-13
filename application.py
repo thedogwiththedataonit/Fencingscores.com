@@ -164,7 +164,7 @@ def user(usr):
 
         for comp in attended_comps:
             
-            print(comp)
+            #print(comp)
             if comp[:5] == "Junior": #doesnt work?
                 print("juniors")
             
@@ -187,9 +187,7 @@ def user(usr):
                 all_comps["win_fencer_len"].append(len(win_scores))
 
                 win_scores_list.append(win_scores)
-                all_comps["win_scores_list"].append(win_scores)
-
-                    
+                all_comps["win_score_list"].append(win_scores)
 
                 loss_fencers = fencer_document.get('loss_fencers')
                 loss_fencers_list.append(loss_fencers)
