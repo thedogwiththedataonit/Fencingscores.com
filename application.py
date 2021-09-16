@@ -158,15 +158,12 @@ def user(usr):
     #so far, use dictionaries to speciffy the types so if can be indexed and clicked upon
 
     #how do you add more apges and go deeper? <usr>/all or <usr>/y14
+    #clicking on the additional url /## posts the information, so maybe a new function?
 
     for category in attended_cats:
         db_comp = cluster[category]
 
         for comp in attended_comps:
-            
-            #print(comp)
-            if comp[:5] == "Junior": #doesnt work?
-                print("juniors")
             
             try:
                   #MAKE DYNAMIC TO MORE CATEGORIES
@@ -223,7 +220,7 @@ def user(usr):
     #USE DICTIONARIESSS!!!!!!
 
 
-    print(all_comps)
+    #print(all_comps)
     return render_template('profile.html', 
                                 name=usr, 
                                 win_percentage=win_percentage, 

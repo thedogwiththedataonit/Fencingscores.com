@@ -105,6 +105,7 @@ header .logo
 .text1 {
   margin-top: 0px;
 
+
 }
 
 
@@ -300,7 +301,7 @@ header .logo
 
 .container2 {
   width: 100%;
-  height: 100%;
+  height: 130vh;
   background-color:#000c31; 
   background-repeat: no-repeat;
   background-size:cover;
@@ -337,10 +338,10 @@ header .logo
 
 .name_input {
   position: relative;
-  top: 40%;
-  left: 30%;
+  left:50%;
+  top:30%;
   width: 500px;
-  padding: 50px;
+  padding: 30px;
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,.5);
   box-sizing: border-box;
@@ -348,18 +349,31 @@ header .logo
   border-radius: 10px;
 }
 
-.name_input h2 {
+.name_input_two {
+  position: relative;
+  top: 5%;
+  left: 75%;
+  width: 500px;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.name_input h2, .name_input_two h2 {
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align: center;
 }
 
-.name_input .user-box {
+.name_input .user-box, .name_input_two .user-box  {
   position: relative;
 }
 
-.name_input .user-box input {
+.name_input .user-box input, .name_input_two .user-box input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -370,7 +384,7 @@ header .logo
   outline: none;
   background: transparent;
 }
-.name_input .user-box label {
+.name_input .user-box label, .name_input_two .user-box label {
   position: absolute;
   top:0;
   left: 0;
@@ -382,14 +396,16 @@ header .logo
 }
 
 .name_input .user-box input:focus ~ label,
-.name_input .user-box input:valid ~ label {
+.name_input .user-box input:valid ~ label,
+.name_input_two .user-box input:focus ~ label,
+.name_input_two .user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #03e9f4;
   font-size: 12px;
 }
 
-.name_input form a {
+.name_input form a, .name_input_two form a {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -403,7 +419,7 @@ header .logo
   letter-spacing: 4px
 }
 
-.name_input a:hover {
+.name_input a:hover, .name_input_two a:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -413,94 +429,15 @@ header .logo
               0 0 50px #03e9f4;
 }
 
-.name_input a span {
-  position: absolute;
-  display: block;
-}
-
-.name_input a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%,100% {
-    left: 100%;
-  }
-}
-
-.name_input a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%,100% {
-    top: 100%;
-  }
-}
-
-.name_input a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.name_input a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,100% {
-    bottom: 100%;
-  }
-}
-
 
 .foilfencing {
   position:relative;
   width: auto;
-  height: 500px;
-  left:40%;
-  top:-20%;
+  height: 400px;
+  bottom: -20%;
+  left:30%;
   filter:brightness(60%);
+  justify-content: center;
 }
 
 .roundedbox1 {
@@ -575,6 +512,7 @@ header .logo
   display: flex;
   vertical-align: middle;
   margin-top: 120px;
+  margin-bottom: 20px;
   height: 250px;
   width: 80%;
 }
@@ -849,3 +787,71 @@ header .logo
 .slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 48%; }
 .slidemenu #slide-item-5:checked ~ .slider .bar{ margin-left: 64%; }
 .slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 80%; }
+
+
+
+
+
+
+/* MOBILE IPHONE*/
+@media (max-width: 480px) {
+
+  header .logo
+{
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 20px;
+}
+  .text h2
+{
+  font-size: 2em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  word-spacing: 5px;
+}
+.text h3
+{
+  font-size: 3.5em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  letter-spacing: -2px;
+  word-spacing: 5px;
+  text-transform: uppercase;
+}
+.text p, .text1 p
+{
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0px 0;
+  font-weight: 400;
+  max-width: 700px;
+}
+.foilfencing {
+  position:relative;
+  width: auto;
+  height: 200px;
+  bottom: -25%;
+  left:12%;
+  filter:brightness(60%);
+  justify-content: center;
+}
+.name_input {
+  position: relative;
+  left:50%;
+  top:30%;
+  width: 350px;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+}
