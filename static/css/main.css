@@ -176,17 +176,17 @@ header .logo
 }
 .text h2
 {
-  font-size: 7em;
-  font-weight: 800;
+  font-size: 5em;
+  font-weight: 900;
   color: #fff;
-  line-height: 1em;
-  letter-spacing: -5px;
+  line-height: .5em;
+  letter-spacing: -4px;
   text-transform: uppercase;
   word-spacing: 10px;
 }
 .text h3
 {
-  font-size: 4em;
+  font-size: 3.5em;
   font-weight: 700;
   color: #fff;
   line-height: 1em;

@@ -20,7 +20,7 @@ def main():
 
         try:
             name_document = collection.find_one({"Name":cap_usr})
-            win_pre = (name_document.get('Pool_win_percentage') )
+            win_pre = (name_document.get('Pool_win_percentage') ) #test to see if name is valid by querying win percentage
 
             return redirect(url_for("user", usr=cap_usr))
         except:
@@ -245,6 +245,8 @@ def user(usr):
                                 all_comps=all_comps
                                 )
 
+
+#@application.route("/<usr>/Juniors")
 
 
 if __name__ == "__main__":
