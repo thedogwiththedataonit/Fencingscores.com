@@ -4,9 +4,11 @@ import pymongo
 from pymongo import MongoClient
 import certifi
 
+from queryfunctions import query_results
 
 
 application = Flask(__name__)
+
 
 @application.route('/', methods=["POST","GET"])
 def main():
@@ -18,6 +20,7 @@ def main():
         collection = db["Names"]
         cap_usr = user.upper()
 
+        
         try:
             name_document = collection.find_one({"Name":cap_usr})
             win_pre = (name_document.get('Pool_win_percentage') ) #test to see if name is valid by querying win percentage
@@ -30,223 +33,41 @@ def main():
         return render_template('index.html')
 
 
-@application.route("/<usr>", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
+
+@application.route("/<usr>/allcompetitions", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
 def user(usr):
-    
-    cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where()) #MAC LINE
-    db = cluster["Names_Cluster"]
-    collection = db["Names"]
+    results = query_results(usr, "all")
+    return render_template('profile.html', name=usr, results=results)
+                            
+@application.route("/<usr>/y14", methods=["POST","GET"]) #NO y14 DATA
+def y14(usr):
+    results = query_results(usr, "y14")
+    return render_template('y14.html', name=usr, results=results)
 
-    name_document = collection.find_one({"Name":usr})
-    win_pre = name_document.get('Pool_win_percentage')
-    win_p = round(win_pre, 2) * 100
-    win_percentage = str(win_p) + "%"
-        
-    attended_comps = name_document.get('Competitions')
-    attended_cats = name_document.get("Category")
+@application.route("/<usr>/cadet", methods=["POST","GET"])
+def cadet(usr):
+    results = query_results(usr, "cadet")
+    return render_template('cadet.html', name=usr, results=results)
 
-    club = name_document.get("Club")
-    nation = name_document.get("Nation")
+@application.route("/<usr>/junior", methods=["POST","GET"])
+def junior(usr):
+    results = query_results(usr, "junior")
+    return render_template('junior.html', name=usr, results=results)
 
-    #Organize by competition category within the python call, so sort the competitions by category, all values, including wins score etc
+@application.route("/<usr>/div1", methods=["POST","GET"])
+def div1(usr):
+    results = query_results(usr, "div1")
+    return render_template('div1.html', name=usr, results=results)
 
-    win_fencers_list = []
-    win_scores_list = []
-    win_list_len = []
+@application.route("/<usr>/div2", methods=["POST","GET"])   #NO DIV2 DATA
+def div2(usr):
+    results = query_results(usr, "div2")
+    return render_template('div2.html', name=usr, results=results)
 
-    loss_fencers_list = []
-    loss_scores_list = []
-    loss_list_len = []
-    indicator_list = []
-    touch_scored_list = []
-    touch_rec_list = []
-
-
-    all_comps = {
-        "attended_comps": attended_comps,
-        "len_attended_comps": len(attended_comps),
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_score_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    y14 = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    cadet = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    junior = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    div1 = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    div2 = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-    div3 = {
-        "attended_comps": [],
-        "win_fencer_list": [],
-        "win_fencer_len": [],
-        "win_scores_list": [],
-        "loss_fencer_list": [],
-        "loss_fencer_len": [],
-        "loss_score_list": [],
-        "indicator_list": [],
-        "touch_scored_list": [],
-        "touch_rec_list": [],
-    }
-
-
-    #so far, use dictionaries to speciffy the types so if can be indexed and clicked upon
-
-    #how do you add more apges and go deeper? <usr>/all or <usr>/y14
-    #clicking on the additional url /## posts the information, so maybe a new function?
-
-    for category in attended_cats:
-        db_comp = cluster[category]
-
-        for comp in attended_comps:
-            
-            try:
-                  #MAKE DYNAMIC TO MORE CATEGORIES
-                collection_comp = db_comp[comp]
-
-                # print(comp)
-                fencer_document = collection_comp.find_one({"Name":usr})
-                #print(fencer_document)
-
-                win_fencers = fencer_document.get('win_fencers')
-                #print(win_fencers)
-                
-                win_fencers_list.append(win_fencers)
-                all_comps["win_fencer_list"].append(win_fencers)
-
-                win_scores = fencer_document.get('win_scores')
-                win_list_len.append(len(win_scores))
-                all_comps["win_fencer_len"].append(len(win_scores))
-
-                win_scores_list.append(win_scores)
-                all_comps["win_score_list"].append(win_scores)
-
-                loss_fencers = fencer_document.get('loss_fencers')
-                loss_fencers_list.append(loss_fencers)
-                all_comps["loss_fencer_list"].append(loss_fencers)
-
-                loss_scores = fencer_document.get('loss_scores')
-                loss_list_len.append(len(loss_scores))
-                all_comps["loss_fencer_len"].append(len(loss_scores))
-
-                loss_scores_list.append(loss_scores)
-                all_comps["loss_score_list"].append(loss_scores)
-
-                indicator = fencer_document.get('Indicator')
-                indicator_list.append(indicator)
-                all_comps["indicator_list"].append(indicator)
-
-                touch_scored = fencer_document.get("Total_scored")
-                touch_scored_list.append(touch_scored)
-                all_comps["touch_scored_list"].append(touch_scored)
-
-                touch_rec = fencer_document.get("Total_Received")
-                touch_rec_list.append(touch_rec)
-                all_comps["touch_rec_list"].append(touch_rec)
-
-            except:
-                continue
-
-        
-
-    
-        
-
-    #USE DICTIONARIESSS!!!!!!
-
-
-    #print(all_comps)
-    return render_template('profile.html', 
-                                name=usr, 
-                                win_percentage=win_percentage, 
-                                len=len(attended_comps), 
-                                attended_comps=attended_comps, 
-                                club=club, 
-                                club_len=len(club), 
-                                nation=nation,
-                                
-                                win_fencers_list = win_fencers_list,
-                                win_list_len = win_list_len,
-                                win_scores_list = win_scores_list,
-
-                                loss_fencers_list = loss_fencers_list,
-                                loss_list_len = loss_list_len,
-                                loss_scores_list = loss_scores_list,
-
-                                indicator_list = indicator_list,
-                                touch_scored_list = touch_scored_list,
-                                touch_rec_list = touch_rec_list,
-                                
-                                all_comps=all_comps
-                                )
-
-
-#@application.route("/<usr>/Juniors")
+@application.route("/<usr>/div3", methods=["POST","GET"])   #NO DIV3 DATA
+def div3(usr):
+    results = query_results(usr, "div3")
+    return render_template('div3.html', name=usr, results=results)
 
 
 if __name__ == "__main__":

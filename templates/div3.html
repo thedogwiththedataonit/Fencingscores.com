@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" contents="width=device-width, initial-scale=1.0">
@@ -19,8 +20,6 @@
         <hr style="width:100%", size="1", color=white>  
     </header>
 
-
-    
     <div class="container3">
         <div class="containerhead">
             <div class="text1">
@@ -57,7 +56,7 @@
                 
                 <!-- change the label tags to a tags so you can href to something -->
                 
-                <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+                <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"/>
                 <label for="slide-item-1" onclick="window.location.href='/{{name}}/allcompetitions';"> 
                     
                     <p class="icon">All</p><span>All Competitions</span>
@@ -95,7 +94,7 @@
                 <label for="slide-item-6" onclick="window.location.href='/{{name}}/div2';">
                     <p class="icon">2</p><span>Division 2</span></label>
 
-                <input type="radio" name="slideItem" id="slide-item-7" class="slide-toggle"/>
+                <input type="radio" name="slideItem" id="slide-item-7" class="slide-toggle" checked/>
                 <label for="slide-item-7" onclick="window.location.href='/{{name}}/div3';">
                     <p class="icon">3</p><span>Division 3</span></label>
                 
@@ -109,107 +108,13 @@
             <div class="bar"></div>
         </div>
 
-        <div class="accordion">
-            {% for i in range(results[5]["len_attended_comps"]) %}
-            <input type="radio" name="select" class="accordion-select" checked />
-            <div class="accordion-title"><span>{{ results[5]["attended_comps"][i] }}</span></div>
-            <div class="accordion-content">
-                
-
-                <div class="content_div">
-                    <div class="content_header">
-                        <div class="text2">
-                            <h2>Won Against
-                                <hr style="width:100%", size="1", color=white> 
-                            </h2>
-
-                            <div class="content_name_score">
-                                {% for j in range(results[5]["win_fencer_len"][i]) %}
-                                <div class="content_names">
-                                    <div class="text2">
-                                        <a href="/{{ results[5]['win_fencer_list'][i][j] }}">{{ results[5]["win_fencer_list"][i][j] }}</a> 
-                                    </div>
-                                </div>
-                                
-                                <div class="content_scores">
-                                    <div class="text2_win">
-                                        <h2> {{ results[5]["win_score_list"][i][j] }} </h2> 
-                                    </div>
-                                </div>
-                                <br>
-                                {% endfor %}
         
-                            </div>
-                             
-                        </div>
-                        <div class="text2">
-                            <h2>Lost Against
-                                <hr style="width:100%", size="1", color=white> 
-                            </h2>
-                             
-                            <div class="content_name_score">
-                                {% for j in range(results[5]["loss_fencer_len"][i]) %}
-                                <div class="content_names">
-                                    <div class="text2">
-                                        <a href="/{{ results[5]['loss_fencer_list'][i][j] }}">{{ results[5]["loss_fencer_list"][i][j] }}</a> 
-                                    </div>
-                                </div>
-                                
-                                <div class="content_scores">
-                                    <div class="text2_loss">
-                                        <h2> {{ results[5]["loss_score_list"][i][j] }} </h2> 
-                                    </div>
-                                </div>
-                                <br>
-                                {% endfor %}
-                            </div>
-
-                        </div>
-                    
-
-                        <div class="text2">
-                            <h2>Indicator
-                                <hr style="width:100%", size="1", color=white> 
-                            </h2>
-                            <div class="content_name_score">
-                                <h2> {{ results[5]["indicator_list"][i] }} </h2>
-                            </div>
-                        </div>
-
-                        <div class="text2">
-                            <h2>Touches Scored
-                                <hr style="width:100%", size="1", color=white> 
-                            </h2>
-                            <div class="content_name_score">
-                                <h2> +{{ results[5]["touch_scored_list"][i] }} </h2>
-                            </div>
-                        </div>
-
-                        <div class="text2">
-                            <h2>Touches Receieved
-                                <hr style="width:100%", size="1", color=white> 
-                            </h2>
-                            <div class="content_name_score">
-                                <h2> -{{ results[5]["touch_rec_list"][i] }} </h2>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div class="content_div_WL">
-
-                </div>
-                <br>
-            </div> 
-            {% endfor %}
-        </div> 
-
-
     <div class=container4>
         <div class="text1">
+            
             <br>
             <br>
+            <p> No Division 3 Data in the database...</p>
             <br>
             <br>
             <p> Alpha Version 1.0</p>
