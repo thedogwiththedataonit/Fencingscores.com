@@ -34,7 +34,7 @@ def main():
 
 
 
-@application.route("/<usr>/allcompetitions", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
+@application.route("/<usr>/", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
 def user(usr):
     results = query_results(usr, "all")
     return render_template('profile.html', name=usr, results=results)
