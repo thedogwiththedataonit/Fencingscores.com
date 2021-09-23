@@ -10,7 +10,7 @@
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
 </head> 
 
 
@@ -43,9 +43,9 @@
             <br>
           </div>
           <ul class="social">
-            <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
+            <li><a href="https://www.linkedin.com/in/thomasjunseopark/"><img width=41px height=41px src="https://w7.pngwing.com/pngs/1024/30/png-transparent-computer-icons-logo-linkedin-logopsd-source-files-angle-text-rectangle.png"></a></li>
             <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
-            <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+            <li><a href="https://www.instagram.com/thomaspvrk/?hl=en"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
           </ul>
         </section>
         <div class="menu">
@@ -59,9 +59,38 @@
         </div>
     </div>
 
-    <div class="container2" id="container2">
+    <div class="loader" id="loader" style="display:none;" >
+      <div class="loader-inner">
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+      </div>
+    </div>
 
-        
+    <script>
+      function flashMessage() {
+        if ("{{ flash_message }}" == "True") {
+          alert("No Name matches in Database");
+        }
+      }
+    </script>
+
+
+    <div class="container2" id="container2">
+      
+
       <div class="name_input">
         <h2>Fencer Results</h2>
         <form action="/" method="post">
@@ -69,11 +98,11 @@
             <input type="text" name="nm" placeholder="last name first name (ex. cho jonah)">
             <label>Name</label>
           </div>
-
-          <input class="button" type="submit" value="submit">
-
-      
+  
+          <input class="button" type="submit" value="submit" onclick="showloader()">
         </form>
+
+        
 
       </div>
 

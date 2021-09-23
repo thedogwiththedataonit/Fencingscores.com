@@ -27,10 +27,10 @@ def main():
 
             return redirect(url_for("user", usr=cap_usr))
         except:
-            return render_template('index.html', error="No Name")
+            return render_template('index.html', flash_message="True")
 
     else:
-        return render_template('index.html')
+        return render_template('index.html', flash_message="True")
 
 
 
