@@ -79,13 +79,6 @@
       </div>
     </div>
 
-    <script>
-      function flashMessage() {
-        if ("{{ flash_message }}" == "True") {
-          alert("No Name matches in Database");
-        }
-      }
-    </script>
 
 
     <div class="container2" id="container2">
@@ -99,7 +92,7 @@
             <label>Name</label>
           </div>
   
-          <input class="button" type="submit" value="submit" onclick="showloader()">
+          <input class="button" type="submit" value="submit" onclick="showloader(); flashMessage();">
         </form>
 
         

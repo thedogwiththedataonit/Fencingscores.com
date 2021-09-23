@@ -16,7 +16,7 @@
 
 <body>
     <header> 
-        <a href="/" class="logo">USFA Fencing Results</a>
+        <a onclick="showloader();" href="/" class="logo">USFA Fencing Results</a>
         <hr style="width:100%", size="1", color=white>  
     </header>
 
@@ -149,7 +149,7 @@
                                 {% for j in range(results[5]["win_fencer_len"][i]) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a href="/{{ results[5]['win_fencer_list'][i][j] }}">{{ results[5]["win_fencer_list"][i][j] }}</a> 
+                                        <a onclick="showloader();" href="/{{ results[5]['win_fencer_list'][i][j] }}">{{ results[5]["win_fencer_list"][i][j] }}</a> 
                                     </div>
                                 </div>
                                 
@@ -173,7 +173,7 @@
                                 {% for j in range(results[5]["loss_fencer_len"][i]) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a href="/{{ results[5]['loss_fencer_list'][i][j] }}">{{ results[5]["loss_fencer_list"][i][j] }}</a> 
+                                        <a onclick="showloader();" href="/{{ results[5]['loss_fencer_list'][i][j] }}">{{ results[5]["loss_fencer_list"][i][j] }}</a> 
                                     </div>
                                 </div>
                                 
