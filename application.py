@@ -24,13 +24,15 @@ def main():
         try:
             name_document = collection.find_one({"Name":cap_usr})
             win_pre = (name_document.get('Pool_win_percentage') ) #test to see if name is valid by querying win percentage
-
+            
             return redirect(url_for("user", usr=cap_usr))
         except:
-            return render_template('index.html', flash_message="True")
+            flash_message="True"
+            return render_template('index.html', flash_message=flash_message)
 
     else:
-        return render_template('index.html', flash_message="True")
+        flash_message="True"
+        return render_template('index.html', flash_message=flash_message)
 
 
 

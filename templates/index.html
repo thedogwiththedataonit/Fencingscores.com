@@ -10,7 +10,12 @@
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script type="text/javascript" src="/static/js/main.js">
+      flash_message = '{{flash_message}}';
+      flash_message(flash_message);
+    </script>
+    
+  
 </head> 
 
 
@@ -19,7 +24,7 @@
     <div class="container1">
       <section class="showcase">
           <header>
-            <h2 class="logo">USFA Fencing Results </h2>
+            <h2 class="logo">USFA Fencing Results {{flash_message}} </h2>
             
           </header>
           <video class="video" src="/static/video/fencing.mp4" muted loop autoplay></video>
@@ -58,7 +63,8 @@
           </ul>
         </div>
     </div>
-
+    
+    
     <div class="loader" id="loader" style="display:none;" >
       <div class="loader-inner">
         <div class="loader-line-wrap">
@@ -92,16 +98,12 @@
             <label>Name</label>
           </div>
   
-          <input class="button" type="submit" value="submit" onclick="showloader(); flashMessage();">
-        </form>
-
+          <input class="button" type="submit" value="submit" onclick="showloader();">
+        </form> 
         
-
-      </div>
-
-
       
-
+      </div>
+      
       <!--
       <div class="name_input_two">
         <h2>Compare Fencers (Not built out yet)</h2>
