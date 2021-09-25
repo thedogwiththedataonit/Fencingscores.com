@@ -39,37 +39,44 @@ def main():
 @application.route("/<usr>/", methods=["POST","GET"]) #HOW TO CONTINUE URLS / / /
 def user(usr):
     results = query_results(usr, "all")
-    return render_template('profile.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('profile.html', name=usr, results=results, message=message)
                             
 @application.route("/<usr>/y14", methods=["POST","GET"]) #NO y14 DATA
 def y14(usr):
     results = query_results(usr, "y14")
-    return render_template('y14.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('y14.html', name=usr, results=results, message=message)
 
 @application.route("/<usr>/cadet", methods=["POST","GET"])
 def cadet(usr):
     results = query_results(usr, "cadet")
-    return render_template('cadet.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('cadet.html', name=usr, results=results, message=message)
 
 @application.route("/<usr>/junior", methods=["POST","GET"])
 def junior(usr):
     results = query_results(usr, "junior")
-    return render_template('junior.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('junior.html', name=usr, results=results, message=message)
 
 @application.route("/<usr>/div1", methods=["POST","GET"])
 def div1(usr):
     results = query_results(usr, "div1")
-    return render_template('div1.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('div1.html', name=usr, results=results, message=message)
 
 @application.route("/<usr>/div2", methods=["POST","GET"])   #NO DIV2 DATA
 def div2(usr):
     results = query_results(usr, "div2")
-    return render_template('div2.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('div2.html', name=usr, results=results, message=message)
 
 @application.route("/<usr>/div3", methods=["POST","GET"])   #NO DIV3 DATA
 def div3(usr):
     results = query_results(usr, "div3")
-    return render_template('div3.html', name=usr, results=results)
+    message = "Alpha Version 1.914"
+    return render_template('div3.html', name=usr, results=results, message=message)
 
 
 if __name__ == "__main__":

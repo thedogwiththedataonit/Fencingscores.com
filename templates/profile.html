@@ -129,9 +129,9 @@
         </div>
         
         <div class="accordion">
-            {% for i in range(results[5]["len_attended_comps"]) %}
+            {% for i in range(results[5]|length) %} 
             <input type="radio" name="select" class="accordion-select" checked />
-            <div class="accordion-title"><span>{{ results[5]["attended_comps"][i] }}</span></div>
+            <div class="accordion-title"><span>{{ results[5][i]["Title"] }}</span></div>
             <div class="accordion-content">
                 
 
@@ -143,16 +143,16 @@
                             </h2>
 
                             <div class="content_name_score">
-                                {% for j in range(results[5]["win_fencer_len"][i]) %}
+                                {% for j in range(results[5][i]["win_scores"]|length) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a onclick="showloader();" href="/{{ results[5]['win_fencer_list'][i][j] }}">{{ results[5]["win_fencer_list"][i][j] }}</a> 
+                                        <a onclick="showloader();" href="/{{ results[5][i]['win_fencers'][j] }}">{{ results[5][i]["win_fencers"][j] }}</a> 
                                     </div>
                                 </div>
                                 
                                 <div class="content_scores">
                                     <div class="text2_win">
-                                        <h2> {{ results[5]["win_score_list"][i][j] }} </h2> 
+                                        <h2> {{ results[5][i]["win_scores"][j] }} </h2> 
                                     </div>
                                 </div>
                                 <br>
@@ -167,16 +167,16 @@
                             </h2>
                              
                             <div class="content_name_score">
-                                {% for j in range(results[5]["loss_fencer_len"][i]) %}
+                                {% for j in range(results[5][i]["loss_fencers"]|length) %}
                                 <div class="content_names">
                                     <div class="text2">
-                                        <a onclick="showloader();" href="/{{ results[5]['loss_fencer_list'][i][j] }}">{{ results[5]["loss_fencer_list"][i][j] }}</a> 
+                                        <a onclick="showloader();" href="/{{ results[5][i]['loss_fencers'][j] }}">{{ results[5][i]["loss_fencers"][j] }}</a> 
                                     </div>
                                 </div>
                                 
                                 <div class="content_scores">
                                     <div class="text2_loss">
-                                        <h2> {{ results[5]["loss_score_list"][i][j] }} </h2> 
+                                        <h2> {{ results[5][i]["loss_scores"][j] }} </h2> 
                                     </div>
                                 </div>
                                 <br>
@@ -191,7 +191,7 @@
                                 <hr style="width:100%", size="1", color=white> 
                             </h2>
                             <div class="content_name_score">
-                                <h2> {{ results[5]["indicator_list"][i] }} </h2>
+                                <h2> {{ results[5][i]["Indicator"] }} </h2>
                             </div>
                         </div>
 
@@ -200,7 +200,7 @@
                                 <hr style="width:100%", size="1", color=white> 
                             </h2>
                             <div class="content_name_score">
-                                <h2> +{{ results[5]["touch_scored_list"][i] }} </h2>
+                                <h2> +{{ results[5][i]["Total_scored"] }} </h2>
                             </div>
                         </div>
 
@@ -209,7 +209,7 @@
                                 <hr style="width:100%", size="1", color=white> 
                             </h2>
                             <div class="content_name_score">
-                                <h2> -{{ results[5]["touch_rec_list"][i] }} </h2>
+                                <h2> -{{ results[5][i]["Total_Received"] }} </h2>
                             </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
             <br>
             <br>
             <br>
-            <p> Alpha Version 2.0</p>
+            <p> {{message}}</p>
         </div>
     </div>
              

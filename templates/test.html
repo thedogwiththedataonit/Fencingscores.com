@@ -16,8 +16,10 @@
 
 <body>
     <h1>{{name}}</h1>
-    <h1>{{ results[7]["attended_comps"] }}</h1>
-    <h1>{{ results }}</h1>
+    <h1> {{ results[5][1]['Name'] }} </h1>
+    {% for i in range(results[5]|length) %}
+    <h2> {{ results[5][i]["Title"] }} </h2>
+    {% endfor %}
 </body>
 
 </html>
