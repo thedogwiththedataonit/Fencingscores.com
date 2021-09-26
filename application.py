@@ -9,6 +9,16 @@ from queryfunctions import query_results
 
 application = Flask(__name__)
 
+#list all names
+""""
+cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where()) #MAC LINE
+    db = cluster["Names_Cluster"]
+    collection = db["Names"]
+
+    print(collection.distinct("Name"))
+"""
+
+
 
 @application.route('/', methods=["POST","GET"])
 def main():

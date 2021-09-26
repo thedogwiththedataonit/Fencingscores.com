@@ -57,8 +57,11 @@
     
             {% if results[4] == "USA" %}
             <img class="USAFLAG" style="vertical-align: middle;"src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
-            {% else %}
+            {% elif results[4] == "CAN" %}
             <img class="CANFLAG" style="vertical-align: middle;" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg">
+            {% else %}
+            <img class="WORLDFLAG" style="vertical-align: middle;" src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwebspace.ship.edu%2Fcgboer%2Fflagsforthewholeworld.html&psig=AOvVaw07fNuqw7p00QJ-9T9f4IAU&ust=1632694327992000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLj2_sCSm_MCFQAAAAAdAAAAABAD">
+            
             {% endif %}
     
             <div class="roundedboxper">

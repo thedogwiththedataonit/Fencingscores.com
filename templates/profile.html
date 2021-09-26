@@ -48,14 +48,18 @@
                 {% for i in range(results[3]) %}
                 <p>{{ results[2][i] }}
                 {% endfor %}
+
             
                 
             </div>
     
             {% if results[4] == "USA" %}
             <img class="USAFLAG" style="vertical-align: middle;"src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
-            {% else %}
+            {% elif results[4] == "CAN" %}
             <img class="CANFLAG" style="vertical-align: middle;" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg">
+            {% else %}
+            <img class="WORLDFLAG" style="vertical-align: middle;" src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwebspace.ship.edu%2Fcgboer%2Fflagsforthewholeworld.html&psig=AOvVaw07fNuqw7p00QJ-9T9f4IAU&ust=1632694327992000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLj2_sCSm_MCFQAAAAAdAAAAABAD">
+            
             {% endif %}
     
             <div class="roundedboxper">
@@ -68,7 +72,10 @@
                 <p> Win %</p>
                 <p> {{ results[1] }} </p>
             </div>
+            
+        
         </div>
+
 
         <!-- create additional /cadet or /junior next to name, new template call, maybe yeah -->
         <div class="container_nav">
@@ -129,6 +136,7 @@
         </div>
         
         <div class="accordion">
+            
             {% for i in range(results[5]|length) %} 
             <input type="radio" name="select" class="accordion-select" checked />
             <div class="accordion-title"><span>{{ results[5][i]["Title"] }}</span></div>
@@ -231,12 +239,13 @@
             <br>
             <br>
             <br>
-            <p> {{message}}</p>
+            <p> {{message}} </p>
         </div>
     </div>
              
     
     </div>
+
 
 
 </body>

@@ -10,16 +10,23 @@
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
 </head> 
 
 
 <body>
-    <h1>{{name}}</h1>
-    <h1> {{ results[5][1]['Name'] }} </h1>
-    {% for i in range(results[5]|length) %}
-    <h2> {{ results[5][i]["Title"] }} </h2>
-    {% endfor %}
+    
+
+    <form autocomplete="off" action="/action_page.php">
+        <div class="autocomplete" style="width:300px;">
+          <input id="myInput" type="text" name="name" placeholder="Name">
+        </div>
+        <input type="submit">
+    </form>
+
+    <script>
+        autocomplete(document.getElementById("myInput"), names_list);
+    </script>
 </body>
 
 </html>

@@ -20,6 +20,8 @@ def query_results(usr, cat):
     db = cluster["Names_Cluster"]
     collection = db["Names"]
 
+    #print(collection.distinct("Name"))
+
     name_document = collection.find_one({"Name":usr})
     win_percentage = name_document.get('Pool_win_percentage')
     

@@ -88,20 +88,26 @@
 
 
     <div class="container2" id="container2">
+      <img class="parksangyoung" src="/static/img/parksangyoung1.png">
       
-
       <div class="name_input">
         <h2>Fencer Results</h2>
-        <form action="/" method="post">
-          <div class="user-box">
-            <input type="text" name="nm" placeholder="last name first name (ex. cho jonah)">
-            <label>Name</label>
+        <form action="/" method="post" autocomplete="off">
+          <div class="autocomplete" style="width:300px;">
+            <input id="myInput" type="text" name="nm" placeholder="last name first name (ex. cho jonah)">
           </div>
   
-          <input class="button" type="submit" value="submit" onclick="showloader();">
+          <input class="button" type="submit" value="submit" onclick="showloader();" style="width:200px;">
+          <br>
+          <br>
         </form> 
-        
-      
+
+        <script>
+          autocomplete(document.getElementById("myInput"), names_list);
+        </script>
+      </div>
+
+      <div class="diagonal-box1">
       </div>
       
       <!--
@@ -127,8 +133,7 @@
 
       <a href="https://github.com/thedogwiththedataonit/USFA_RESULTS_APP">Github Code</a>
       -->
-
-      <img class="foilfencing" src="/static/img/fencingfoil.png">
+    
     </div>
 
     <p>{{message}}</p>
