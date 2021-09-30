@@ -23,7 +23,7 @@ def query_results(usr, cat):
     #print(collection.distinct("Name"))
 
     name_document = collection.find_one({"Name":usr})
-    win_percentage = (name_document.get('Pool_win_percentage') * 100) 
+    win_percentage = round((name_document.get('Pool_win_percentage') * 100),2) 
     
     
     attended_comps = name_document.get('Competitions')
@@ -154,8 +154,8 @@ def query_results(usr, cat):
                 )
 
 
-#results = (query_results("PARK, THOMAS JUNSEO", "all"))
-#print(results)
+results = (query_results("PARK THOMAS JUNSEO", "all"))
+print(results)
 #print(len(results[5]["win_fencer_len"]))
 #print(len(results[5]["win_score_list"]))
 #print((results[5]["len_attended_comps"]))
