@@ -59,19 +59,21 @@
             {% elif results[4] == "CAN" %}
             <img class="CANFLAG" style="vertical-align: middle;" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg">
             {% else %}
-            <img class="WORLDFLAG" style="vertical-align: middle;" src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwebspace.ship.edu%2Fcgboer%2Fflagsforthewholeworld.html&psig=AOvVaw07fNuqw7p00QJ-9T9f4IAU&ust=1632694327992000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLj2_sCSm_MCFQAAAAAdAAAAABAD">
+            <img class="WORLDFLAG" style="vertical-align: middle;" src="http://webspace.ship.edu/cgboer/worldflagsm.GIF">
             
             {% endif %}
     
             <div class="roundedboxper">
+                <h2> Weapon </h2>
                 <br>
-                <p> Ranking </p>
-                <p> #number# </p>
+                {% for b in range(results[6]|length) %} 
+                <p> {{ results[6][b] }} </p>
+                {% endfor %}
             </div>
             <div class="roundedboxper">
+                <h2> Wins</h2>
                 <br>
-                <p> Win %</p>
-                <p> {{ results[1] }} </p>
+                <p> {{ results[1] }}% </p>
             </div>
         </div>
 

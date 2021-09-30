@@ -13,10 +13,11 @@
 </head> 
 
 
-<body>
+<body >
     <header> 
         <a onclick="showloader();" href="/" class="logo">USFA Fencing Results</a>
         <hr style="width:100%", size="1", color=white>  
+
     </header>
 
     <!-- LOADER -->
@@ -63,18 +64,21 @@
             {% endif %}
     
             <div class="roundedboxper">
+                <h2> Weapon </h2>
                 <br>
-                <p> Ranking </p>
-                <p> #number# </p>
+                {% for b in range(results[6]|length) %} 
+                <p> {{ results[6][b] }} </p>
+                {% endfor %}
             </div>
             <div class="roundedboxper">
+                <h2> Wins</h2>
                 <br>
-                <p> Win %</p>
-                <p> {{ results[1] }} </p>
+                <p> {{ results[1] }}% </p>
             </div>
             
         
         </div>
+
 
 
         <!-- create additional /cadet or /junior next to name, new template call, maybe yeah -->
@@ -84,7 +88,7 @@
                 <!-- change the label tags to a tags so you can href to something -->
                 
                 <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
-                <label for="slide-item-1" onclick="window.location.href='/{{name}}/'; showloader();"> 
+                <label for="slide-item-1" onclick="window.location.href='/{{name}}/'; showloader(); jsonData('{{json_results}}'); "> 
                     
                     <p class="icon">All</p><span>All Competitions</span>
                     
@@ -243,7 +247,7 @@
         </div>
     </div>
              
-    
+
     </div>
 
 
