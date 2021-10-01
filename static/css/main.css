@@ -957,9 +957,9 @@ input[type="button"] {
     justify-content: center;
   }
   .name_input {
-    position: relative;
+    position: absolute;
     left: 50%;
-    top: 30%;
+    top: 150%;
     width: 400px;
     padding: 30px;
     transform: translate(-50%, -50%);

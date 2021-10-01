@@ -154,8 +154,8 @@ def query_results(usr, cat):
                 )
 
 
-results = (query_results("PARK THOMAS JUNSEO", "all"))
-print(results)
+#results = (query_results("PARK THOMAS JUNSEO", "all"))
+#print(results)
 #print(len(results[5]["win_fencer_len"]))
 #print(len(results[5]["win_score_list"]))
 #print((results[5]["len_attended_comps"]))
