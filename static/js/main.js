@@ -48,9 +48,12 @@ function removeName() { //WORK ON//
 
 // =================================================================================== //
 
-function jsonData(data) {  //Pass python data to html to js function
+function json(data) {  //Pass python data to html to js function
+  myvar = JSON.parse(data);
+  console.log(myvar);
+  console.log(myvar[2]["Pool_Results"]);
 
-  console.log(data)
+  
 }
 
 // =================================================================================== //

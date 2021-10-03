@@ -55,14 +55,14 @@ def query_results(usr, cat):
         db_comp = cluster[category]
         collection_names_in_category = list(db_comp.list_collection_names())
         #print(collection_names_in_category)
-        for comp in attended_sorted_comps:#list of all competitions
-            if comp in collection_names_in_category:
+        for comp_title in attended_sorted_comps:#list of all competitions
+            if comp_title in collection_names_in_category:
             
-                if "Cadet" in comp:
+                if "Cadet" in comp_title:
                     
-                    collection_comp = db_comp[comp] #try... checks if the competition exists within the cluster
+                    collection_comp = db_comp[comp_title] #try... checks if the competition exists within the cluster
 
-                    #print(comp)
+                    #print(comp_title)
                     fencer_document = collection_comp.find_one({"Name":usr})
                     #print(fencer_document)
                     #print("___________________________")
@@ -72,10 +72,10 @@ def query_results(usr, cat):
                     #print(win_fencers)
 
                         
-                if "Junior" in comp:
+                if "Junior" in comp_title:
 
-                    collection_comp = db_comp[comp] #try... checks if the competition exists within the cluster
-                    #print(comp)
+                    collection_comp = db_comp[comp_title] #try... checks if the competition exists within the cluster
+                    #print(comp_title)
                     fencer_document = collection_comp.find_one({"Name":usr})
                     #print(fencer_document)
                     #print("___________________________")
@@ -83,12 +83,12 @@ def query_results(usr, cat):
                     all_comps.append(fencer_document)
                     junior.append(fencer_document)
 
-                if "Div I" in comp:
+                if "Div I" in comp_title:
 
-                    collection_comp = db_comp[comp] #try... checks if the competition exists within the cluster
+                    collection_comp = db_comp[comp_title] #try... checks if the competition exists within the cluster
 
 
-                    #print(comp)
+                    #print(comp_title)
                     fencer_document = collection_comp.find_one({"Name":usr})
                     #print(fencer_document)
                     #print("___________________________")
@@ -161,4 +161,102 @@ def query_results(usr, cat):
 #print((results[5]["len_attended_comps"]))
 
  #RETURNS ARE BY INDEX VALUES
+
+def comp_data(comp):
+    if (comp[0:16] == "Cadet Men's Epee"):
+        comp_cat = "USFA_CME"
+        comp_title = "Cadet Men's Epee"
+
+    if (comp[0:17] == "Junior Men's Epee"):
+        comp_cat = "USFA_JME"
+        comp_title = "Junior Men's Epee"
+
+    if (comp[0:16] == "Div I Men's Epee"):
+        comp_cat = "USFA_DME"
+        comp_title = "Div I Men's Epee"
+
+    if (comp[0:18] == "Cadet Women's Epee"):
+        comp_cat = "USFA_CWE" 
+        comp_title = "Cadet Women's Epee"
+
+    if (comp[0:19] == "Junior Women's Epee"):
+        comp_cat = "USFA_JWE"
+        comp_title = "Junior Women's Epee"
+
+    if (comp[0:18] == "Div I Women's Epee"):
+        comp_cat = "USFA_DWE"
+        comp_title = "Div I Women's Epee"
+
+    if (comp[0:16] == "Cadet Men's Foil"):
+        comp_cat = "USFA_CMF" 
+        comp_title = "Cadet Men's Foil"
+
+    if (comp[0:17] == "Junior Men's Foil"):
+        comp_cat = "USFA_JMF"
+        comp_title = "Junior Men's Foil"
+
+    if (comp[0:16] == "Div I Men's Foil"):
+        comp_cat = "USFA_DMF"
+        comp_title = "Div I Men's Foil"
+
+    if (comp[0:18] == "Cadet Women's Foil"):
+        comp_cat = "USFA_CWF"
+        comp_title = "Cadet Women's Foil"
+
+    if (comp[0:19] == "Junior Women's Foil"):
+        comp_cat = "USFA_JWF"
+        comp_title = "Junior Women's Foil"
+
+    if (comp[0:18] == "Div I Women's Foil"):
+        comp_cat = "USFA_DWF"
+        comp_title = "Div I Women's Foil"
+
+    if (comp[0:17] == "Cadet Men's Saber"):
+        comp_cat = "USFA_CMS"
+        comp_title = "Cadet Men's Saber"
+
+    if (comp[0:18] == "Junior Men's Saber"):
+        comp_cat = "USFA_JMS"
+        comp_title = "Junior Men's Saber"
+
+    if (comp[0:17] == "Div I Men's Saber"):
+        comp_cat = "USFA_DMS"
+        comp_title = "Div I Men's Saber"
+
+    if (comp[0:19] == "Cadet Women's Saber"):
+        comp_cat = "USFA_CWS"
+        comp_title = "Cadet Women's Saber"
+
+    if (comp[0:20] == "Junior Women's Saber"):
+        comp_cat = "USFA_JWS"
+        comp_title = "Junior Women's Saber"
+
+    if (comp[0:19] == "Div I Women's Saber"):
+        comp_cat = "USFA_DWS"
+        comp_title = "Div I Women's Saber"
+
+    cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where())  # MAC LINE
+    db = cluster[comp_cat]
+    collection = db[comp]
+
+    values_split = comp.split(comp_title)
+    date = values_split[1]
+
+    list_of_documents = list(collection.find())
+    #print(list_of_documents)
+
+    #print(list_of_documents[1]["Victory_count"])
+    sort = sorted(list_of_documents, key=lambda k: (k["Victory_count"]), reverse=True)
+    
+    #print("-------------------------")
+    #print(sort)
+    #for i in sort:
+        #print(i["Percentage_wins"])
+        #print(i["Indicator"])
+        #print(i["Name"])
+
+    return (comp_title,
+            date,
+            sort, 
+            )
 
