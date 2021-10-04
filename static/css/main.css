@@ -1134,13 +1134,17 @@ header nav a:active {
 }
 
 /* MOBILE IPHONE*/
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   header .logo {
     color: #fff;
     text-transform: uppercase;
     font-weight: 400;
     cursor: pointer;
     font-size: 20px;
+  }
+  .text {
+    position: relative;
+    z-index: 2;
   }
   .text h2 {
     font-size: 2em;
@@ -1153,7 +1157,7 @@ header nav a:active {
   }
 
   .text2_loss h2 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 500;
     color: rgb(255, 255, 255);
     line-height: 1em;
@@ -1164,7 +1168,7 @@ header nav a:active {
     background-color: rgb(161, 0, 0);
   }
   .text2_win h2 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 500;
     color: rgb(255, 255, 255);
     line-height: 1em;
@@ -1215,5 +1219,89 @@ header nav a:active {
 
   .parksangyoung {
     height: 0px;
+  }
+
+  header nav {
+    left: 25%;
+    top: -50px;
+    position: relative;
+    width: 320px;
+    height: 260px;
+    background: rgba(30, 26, 95, 1);
+    color: rgb(255, 255, 255);
+    -webkit-clip-path: circle(24px at 30px 24px);
+    clip-path: circle(25px at 234px 24px);
+    -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+    transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+    z-index: 10;
+  }
+
+  header nav:hover {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    -webkit-transition-duration: 0.75s;
+    transition-duration: 0.65s;
+    -webkit-clip-path: circle(390px at 225px 24px);
+    clip-path: circle(390px at 150px 24px);
+  }
+
+  header nav a {
+    display: block;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 20px;
+    color: inherit;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  header nav a:hover {
+    background: #ffffffc4;
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+  }
+
+  header nav a:active {
+    background: #ffffffc4;
+  }
+
+  .navicon {
+    padding: 23px 20px;
+    cursor: pointer;
+    -webkit-transform-origin: 32px 24px;
+    -ms-transform-origin: 32px 24px;
+    transform-origin: 32px 24px;
+  }
+
+  .navicon div {
+    position: relative;
+    left: 200px;
+    width: 30px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.87);
+  }
+
+  .navicon div:before,
+  .navicon div:after {
+    display: block;
+    content: "";
+    width: 30px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.87);
+    position: absolute;
+  }
+
+  .navicon div:before {
+    top: -7px;
+  }
+
+  .navicon div:after {
+    top: 7px;
   }
 }
