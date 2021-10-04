@@ -101,5 +101,20 @@ def comp(comp):
     #print(comp[2]) #COMP DATA
     return render_template('comp.html', title=comp[0], date=comp[1], data=comp[2], message=message)
 
+@application.route("/competitions", methods=["POST", "GET"])
+def comps():
+    message = "Alpha Version 1.914"
+    return render_template('comp_list.html', message=message)
+
+@application.route("/fencers", methods=["POST", "GET"])
+def fencers():
+    message = "Alpha Version 1.914"
+    return render_template('fencers_list.html', message=message)
+
+@application.route("/betting", methods=["POST", "GET"])
+def betting():
+    message = "Alpha Version 1.914"
+    return render_template('betting.html', message=message)
+
 if __name__ == "__main__":
     application.run(debug=True)  # turn debug off for prodcution deployment

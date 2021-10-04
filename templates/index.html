@@ -18,15 +18,26 @@
   
 </head> 
 
-
-<body>
     
     <div class="container1">
       <section class="showcase">
-          <header>
-            <h2 class="logo">USFA Fencing Results  </h2>
+        <header> 
+          <a class="logo" style="line-height: 40px;">USFA Fencing Results</a>
+          <hr style="width:90%;;", size="1", color=white>  
+  
+          <nav>
+              <div class="navicon">
+                <div></div>
+              </div>
             
-          </header>
+              <a onclick="window.location.href='/competitions'; showloader();">Competitions</a>
+              <a onclick="window.location.href='/fencers'; showloader();">Fencers</a>
+              <a onclick="window.location.href='/betting'; showloader();">Betting</a>
+
+          </nav>
+  
+        </header>
+
           <video class="video" src="/static/video/fencing.mp4" muted loop autoplay></video>
           <div class="overlay"></div>
           <div class="text">
@@ -78,6 +89,8 @@
     </div>
 
     <div class="container2" id="container2">
+
+      
       <img class="parksangyoung" src="/static/img/parksangyoung1.png">
 
       <div class="diagonal-box1">

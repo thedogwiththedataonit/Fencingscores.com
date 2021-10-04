@@ -32,6 +32,16 @@
 
     </header>
 
+    <div class="container3">
+        <div class="containerhead_comp">
+            <div class="text1">
+                <h2> In Progress... </h2> 
+                <p> Fencers page </p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
     
     <!-- LOADER -->
     <div class="loader" id="loader" style="display:none;" >
@@ -53,52 +63,6 @@
           </div>
         </div>
       </div>
-
-    <div class="container3">
-        <div class="containerhead_comp">
-            <div class="text1">
-                <h2> {{ title }} </h2> 
-                <p> {{ date }} </p>
-                <br>
-                <br>
-            </div>
-        </div>
-
-        <section>
-            <!--for demo wrap-->
-            <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <thead>
-                <tr>
-                    <th> # </th>
-                    <th>Name</th>
-                    <th>Wins</th>
-                    <th>Indicator</th>
-                    <th>Touches Scored</th>
-                    <th>Touches Recieved</th>
-                </tr>
-                </thead>
-            </table>
-            </div>
-            <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <tbody>
-                {% for i in range(data|length) %}
-                <tr onclick="window.location.href='/{{ data[i]['Name'] }}/'; showloader();">
-                    <td> {{ i+1 }} </td>
-                    <td>{{ data[i]["Name"] }}</td>
-                    <td>{{ data[i]["Victory_count"] }} </td>
-                    <td>{{ data[i]["Indicator"] }} </td>
-                    <td>{{ data[i]["Total_Received"] }} </td>
-                    <td>{{ data[i]["Total_scored"] }} </td>
-                </tr>
-                {% endfor %}
-                
-                </tbody>
-            </table>
-            </div>
-        </section>
-    </div>
 
     
 
