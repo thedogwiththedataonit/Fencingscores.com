@@ -47,10 +47,15 @@
             <div class="text1">
                 <h2> {{ name }} </h2>
     
-                {% for i in range(results[3]) %}
-                <p>{{ results[2][i] }}
-                {% endfor %}
-            
+                {% if results[2]|length <= 3 %}
+                    {% for i in range(results[3]) %}
+                    <p>{{ results[2][i] }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>{{ results[2][-1] }}</p>
+                    <p>{{ results[2][-2] }}</p>
+                    <p>{{ results[2][-3] }}</p>
+                {% endif %}
                 
             </div>
     
@@ -74,6 +79,38 @@
                 <h2> Wins</h2>
                 <br>
                 <p> {{ results[1] }}% </p>
+            </div>
+
+            <div class="star_container">
+                {% if results[1] < 20 %}
+                <img class="star" src="/static/img/star.png">
+                {% elif 20 <= results[1] < 40 %}
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                {% elif 40 <= results[1] < 60 %}
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                {% elif 60 <= results[1] < 80 %}
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                {% elif 80 <= results[1] < 90 %}
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                {% else %}
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                <img class="star" src="/static/img/star.png">
+                {% endif %}
+
             </div>
         </div>
 
