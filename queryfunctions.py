@@ -2,6 +2,8 @@ import pymongo
 from pymongo import MongoClient
 import certifi
 import gc
+from mongo import connection_string
+import random
 
 #Use this script to reference the main application.py file
 
@@ -16,7 +18,7 @@ import gc
 
 def query_results(usr, cat):
     #print(category)
-    cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where()) #MAC LINE
+    cluster = MongoClient(connection_string, tlsCAFile=certifi.where()) #MAC LINE
     db = cluster["Names_Cluster"]
     collection = db["Names"]
 
@@ -235,7 +237,7 @@ def comp_data(comp):
         comp_cat = "USFA_DWS"
         comp_title = "Div I Women's Saber"
 
-    cluster = MongoClient("mongodb+srv://thomas:0806@cluster0.2kcsq.mongodb.net/python?retryWrites=true&w=majority", tlsCAFile=certifi.where())  # MAC LINE
+    cluster = MongoClient(connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster[comp_cat]
     collection = db[comp]
 
@@ -259,4 +261,14 @@ def comp_data(comp):
             date,
             sort, 
             )
+
+def top_fencer_names():
+    cluster = MongoClient(connection_string, tlsCAFile=certifi.where()) #MAC LINE
+    db = cluster["Names_Cluster"]
+    collection = db["Names"]
+    query = {"Pool_win_percentage": {"$gt":.90}} 
+    names = list(collection.find(query).distinct("Name")) ##ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
+    random.shuffle(names)
+    
+    return (names)
 
