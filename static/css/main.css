@@ -1189,7 +1189,7 @@ body {
   .name_input {
     position: absolute;
     left: 50%;
-    top: 150%;
+    top: 140%;
     width: 400px;
     padding: 30px;
     transform: translate(-50%, -50%);
@@ -1286,5 +1286,25 @@ body {
 
   .navicon div:after {
     top: 7px;
+  }
+
+  .frontpagebox {
+    position: absolute;
+    right: 85px;
+    bottom:-900px;
+    width: 300px;
+    height: 400px;
+    background-color: rgba(36, 36, 36, 0.7);
+    z-index: 500;
+    border-radius: 10px;
+    box-shadow: 15px 15px rgba(0, 0, 0, 0.7);
+  }
+  .diagonal-box1 {
+    background-color: #2c2ca0;
+    transform: skewY(-10deg);
+    position: relative;
+    height: 700px;
+    top: 5%;
+    z-index: -5;
   }
 }
