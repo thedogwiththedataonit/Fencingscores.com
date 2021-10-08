@@ -33,10 +33,10 @@ def main():
 
             return redirect(url_for("user", usr=cap_usr))
         except:
-            return render_template('index.html', topfencers=list_top_fencers)
+            return render_template('index.html', topfencers_names=list_top_fencers[0], topfencers_clubs=list_top_fencers[1])
 
     else:
-        return render_template('index.html', topfencers=list_top_fencers)
+        return render_template('index.html', topfencers_names=list_top_fencers[0], topfencers_clubs=list_top_fencers[1])
 
 
 # HOW TO CONTINUE URLS / / /
@@ -122,4 +122,5 @@ def betting():
 
 
 if __name__ == "__main__":
-    application.run(debug=True)  # turn debug off for prodcution deployment
+    # turn debug off for prodcution deployment
+    application.run(debug=True, host='0.0.0.0')

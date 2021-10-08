@@ -24,16 +24,6 @@
           <a class="logo" style="line-height: 40px;">USFA Fencing Results</a>
           <hr style="width:90%;;", size="1", color=white>  
   
-          <nav>
-              <div class="navicon">
-                <div></div>
-              </div>
-            
-              <a onclick="window.location.href='/competitions'; showloader();">Competitions</a>
-              <a onclick="window.location.href='/fencers'; showloader();">Fencers</a>
-              <a onclick="window.location.href='/betting'; showloader();">Betting</a>
-
-          </nav>
   
         </header>
 
@@ -70,9 +60,11 @@
 
             
             <ul class="data-list" data-autoscroll>
-            {% for s in range(topfencers|length) %}
-              <li onclick="window.location.href='/{{topfencers[s]}}/'; showloader();"> 
-                {{topfencers[s] }}
+            {% for s in range(topfencers_names|length) %}
+              <li onclick="window.location.href='/{{topfencers_names[s]}}/'; showloader();"> 
+                {{topfencers_names[s]}}
+                <p>{{topfencers_clubs[s]}}</p>
+
               </li>
             {% endfor %}
               

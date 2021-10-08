@@ -163,7 +163,7 @@ header .logo {
   font-size: 5em;
   font-weight: 900;
   color: #fff;
-  line-height: 0.5em;
+  line-height: 1em;
   letter-spacing: -4px;
   text-transform: uppercase;
   word-spacing: 10px;
@@ -346,7 +346,7 @@ input[type="button"]:hover {
   box-shadow: 15px 15px rgba(0, 0, 0, 0.7);
 }
 .text_topfencers h2 {
-  font-size:1.5em;
+  font-size: 1.5em;
   font-weight: 200;
   color: rgb(255, 255, 255);
   line-height: 2em;
@@ -359,7 +359,7 @@ input[type="button"]:hover {
   list-style: none;
 }
 .data-list li {
-  height: 75px;
+  height: 90px;
   width: 100%;
   border: 1px solid #222;
   background: rgb(2, 0, 36);
@@ -381,7 +381,7 @@ input[type="button"]:hover {
   padding-right: 10px;
 }
 .data-list li:nth-child(odd) {
-  height: 75px;
+  height: 90px;
   width: 100%;
   border: 1px solid #222;
   background: rgb(2, 0, 36);
@@ -396,7 +396,11 @@ input[type="button"]:hover {
   color: #fafafa;
 }
 .data-list li:hover {
-  color: #ffd000;
+  color: #60a0f3;
+}
+.data-list p {
+  font-size: 15px;
+  color: rgb(209, 188, 118);
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -607,7 +611,7 @@ input[type="button"]:hover {
   vertical-align: middle;
   margin-top: 120px;
   margin-bottom: 20px;
-  height: 200px;
+  height: 130px;
   width: 80%;
 }
 
@@ -772,7 +776,7 @@ input[type="button"]:hover {
 .container_nav {
   width: 100%;
   position: relative;
-  z-index: 15;
+  z-index: 20;
 }
 .clear {
   clear: both;
@@ -1111,89 +1115,6 @@ body {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 162, 255, 0.5);
 }
 
-header nav {
-  left: 80%;
-  top: -50px;
-  position: relative;
-  width: 320px;
-  height: 320px;
-  background: rgba(30, 26, 95, 0.5);
-  color: rgb(255, 255, 255);
-  -webkit-clip-path: circle(24px at 30px 24px);
-  clip-path: circle(25px at 234px 24px);
-  -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-  transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-}
-
-header nav:hover {
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  -webkit-transition-duration: 0.75s;
-  transition-duration: 0.65s;
-  -webkit-clip-path: circle(390px at 225px 24px);
-  clip-path: circle(390px at 150px 24px);
-}
-
-header nav a {
-  display: block;
-  line-height: 60px;
-  padding: 0 20px;
-  text-align: center;
-  letter-spacing: 1px;
-  font-weight: 400;
-  font-size: 20px;
-  color: inherit;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-header nav a:hover {
-  background: #ffffffc4;
-  color: rgb(0, 0, 0);
-  z-index: 1000;
-}
-
-header nav a:active {
-  background: #ffffffc4;
-}
-
-.navicon {
-  padding: 23px 20px;
-  cursor: pointer;
-  -webkit-transform-origin: 32px 24px;
-  -ms-transform-origin: 32px 24px;
-  transform-origin: 32px 24px;
-}
-
-.navicon div {
-  position: relative;
-  left: 200px;
-  width: 30px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.87);
-}
-
-.navicon div:before,
-.navicon div:after {
-  display: block;
-  content: "";
-  width: 30px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.87);
-  position: absolute;
-}
-
-.navicon div:before {
-  top: -7px;
-}
-
-.navicon div:after {
-  top: 7px;
-}
-
 /* MOBILE IPHONE*/
 @media (max-width: 500px) {
   header .logo {
@@ -1304,6 +1225,7 @@ header nav a:active {
     transition-duration: 0.65s;
     -webkit-clip-path: circle(390px at 225px 24px);
     clip-path: circle(390px at 150px 24px);
+    z-index: 100;
   }
 
   header nav a {

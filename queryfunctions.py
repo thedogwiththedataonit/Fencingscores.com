@@ -267,8 +267,23 @@ def top_fencer_names():
     db = cluster["Names_Cluster"]
     collection = db["Names"]
     query = {"Pool_win_percentage": {"$gt":.90}} 
-    names = list(collection.find(query).distinct("Name")) ##ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
-    random.shuffle(names)
+    names = list(collection.find(query)) ##ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
+
+    names_list = []
+    club_list = []
+    for i in names:
+        names_list.append(i["Name"])
+        club_list.append(i["Club"][-1])
+
+    combined = list(zip(names_list,club_list))
+
+    random.shuffle(combined)
     
-    return (names)
+    names_list,club_list = zip(*combined)
+    #print(names_list)
+    #print(club_list)
+
+    return (names_list, club_list)
+
+
 
