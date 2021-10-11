@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script type="text/javascript" src="/static/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 </head> 
 
 
@@ -271,20 +272,16 @@
             </div> 
             {% endfor %}
         </div> 
+    </div>
 
-
-    <div class=container4>
-        <div class="text1">
-            <br>
-            <br>
-            <br>
-            <br>
-            <p> {{message}}</p>
-        </div>
+    <div class="container4">
+        <canvas id="chart" width="1250" height="600"></canvas>
+        <script>
+            chartCreate('{{data|tojson}}');            
+        
+        </script>
     </div>
              
-    
-    </div>
 
 
 </body>

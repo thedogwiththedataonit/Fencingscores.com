@@ -50,17 +50,124 @@ function removeName() { //WORK ON//
 
 function json(data) {  //Pass python data to html to js function
   myvar = JSON.parse(data);
-  console.log(myvar);
-  console.log(myvar[2]["Pool_Results"]);
+  titles = [];
+  percentage_wins = [];
+
+  for (var i=0; i<myvar.length; i++) {
+    titles.push((myvar[i]["Title"]));
+    percentage_wins.push((myvar[i]["Percentage_wins"]))
+  }
+  console.log(titles);
+  console.log(percentage_wins);
 
   
 }
 
 // =================================================================================== //
 
+async function chartCreate(data) {
+
+  myvar = JSON.parse(data);
+  titles = [];
+  percentage_wins = [];
+  total_rec = [];
+  total_scored = [];
+  indicator = [];
+
+
+  for (var i=0; i<myvar.length; i++) {
+    titles.push((myvar[i]["Title"]));
+    percentage_wins.push((myvar[i]["Percentage_wins"])*100);
+    total_rec.push((myvar[i]["Total_Received"]));
+    total_scored.push((myvar[i]["Total_scored"]));
+    indicator.push((myvar[i]["Indicator"]));
+
+
+  }
+
+  var ctx = document.getElementById('chart').getContext('2d');
+  var xlabels = titles;
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: xlabels,
+          datasets: [{
+              label: 'Win Percentages',
+              data: percentage_wins,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.3)',
+                
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+          
+              ],
+              borderWidth: 1
+          },
+
+          {
+            label: 'Indicator',
+              data: indicator,
+              backgroundColor: [
+                'rgba(255, 159, 64, 0.3)',
+                
+              ],
+              borderColor: [
+                'rgba(255, 159, 64, 1)',
+          
+              ],
+              borderWidth: 1
+          },
+
+          {
+            label: 'Touches Received',
+              data: total_rec,
+              backgroundColor: [
+                'rgba(153, 102, 255, 0.3)',
+                
+              ],
+              borderColor: [
+                'rgba(153, 102, 255, 1)',
+          
+              ],
+              borderWidth: 1
+          },
+
+          {
+            label: 'Touches Scored',
+              data: total_scored,
+              backgroundColor: [
+                'rgba(75, 192, 192, 0.3)',
+                
+              ],
+              borderColor: [
+                'rgba(255, 205, 86, 1)',
+          
+              ],
+              borderWidth: 1
+          }
+        
+        
+        ],
+          
+
+      },
+      options: {
+        scales: {
+
+        },
+          responsive: false,
+          maintainAspectRatio: false,
+      }
+          
+  });
+}
 
 
 // =================================================================================== //
+
+
+
 
 let names_list = ["' SHEVEK", 'AARON NICHOLAS', 'ABAYEVA SASHA', 'ABBONDANZIO DAVID', 'ABBOTT JADE', 'ABBOTT NICHOLAS', 'ABBOTT SAMANTHA', 'ABDALGWAD OMAR', 'ABDALLAH AHMED', 'ABDELAZIZ HISHAM', 'ABDELAZIZ NADINE', 'ABDELGAWAD ABDELRAHMAN', 'ABDELKAREM MOATAZBELLAH', 'ABDUL-QADIR SAMIA', 'ABDULLAH YASMINE', 'ABDULLAHI EKHLAS', 'ABDULLAHI SALMA', 'ABDUR-RAHMAN HANNAH-MARIE', 'ABELA SEBASTIAN', 'ABELSKY JULIA', 'ABELSKY JULIA (JULIA ABELSKY)', 'ABEND AUDREY', 'ABEND THOMAS', 'ABILAY BRYSON', 'ABOAF ALBERT', 'ABOUDAHER JANNA', 'ABOUSAMRA MAMDOU', 'ABRAHAM HANNAH', 'ABRAMSON MARIELA', 'ABRELL MICHAEL', 'ABTIN ARYANA', 'ACCARDI EVAN', 'ACHILOVA FEYZA', 'ACHTERBERG SAMANTHA (SAMMY)', 'ACINAPURO PHILIP', 'ACOSTA PEREIRA VILMARIE', 'ACRES EOWYN', 'ADALBERT JADE', 'ADAMIAN LOUIS', 'ADAMIAN NATHANIEL', 'ADAMITIS NOAH', 'ADAMS HARRY', 'ADAMS KIM MADELINE', 'ADAMS KIM NATALIE', 'ADAMS LUKE', 'ADAMS MORRIGAN', 'ADAMS PAISLEY', 'ADAMS ROSE', 'ADAMS SAGE', 'ADAMS ZACHARY', 'ADARVE FIAMMA MARGUERITE', 'ADDERLEY KATHERINE', 'ADEL ALI', 'ADLER DAVID', 'ADLER ETHAN', 'ADLER IAN', 'ADLER POLLY', 'ADOLPHE BENJAMIN', 'ADORNO-MARTINEZ EVA', 'ADRAGNA OLIVIA', 'ADRIANZEN CLAUDIO', 'ADVINCULA AGATHA', 'ADVINCULA ANABELLA', 'ADVINCULA DASH', 'ADYNSKI GILLIAN', 'AGARWAL NAMAN', 'AGGARWAL ABHIMANYU', 'AGGARWAL VIKRAM', 'AGOB NICOLE', 'AGRAWAL SANKALP', 'AGRAWAL SANKALP (SUNNY)', 'AGUILAR CHRISTIAN', 'AGUILAR GLORIA', 'AGUINAGA CHRISTIAN', 'AGUINALDO FRANCIS', 'AHEARN BRYAN', 'AHMED AMINA', 'AHMED RANIA', 'AHN AARON', 'AHN AIDEN', 'AHN AMY', 'AHN CHRISTOFER', 'AHN CHRISTOFER (CHRIS)', 'AHN GABRIELLA', 'AHN GUS', 'AHN ISABELLA', 'AHN JUN', 'AHN JUNGSOO', 'AHO RACHEL', 'AHUJA ARIANNA', 'AIBEL HUDSON', 'AINA TIWALAYO', 'AITKEN ANDREW', 'AITOUMEZIANE BENJAMIN', 'AJNSZTAJN ALEC', 'AKARD MICAH', 'AKHMETOV ISKANDER', 'AKRAMI DAVID', 'AKSAMIT MONICA', 'AL-KHAFAJI A. GRAYDON', 'AL-TAYEB AHMED', 'ALAIMO CHARLES', 'ALARIE CHRISTIAN', 'ALBERT DEVIKA', 'ALBERT KACIE', 'ALBRITTON DAVIN', 'ALBRITTON SETH', 
 'ALCEBAR KAYLA', 'ALDADAH HUDA', 'ALDADAH LINA', 'ALDEA ABIGAIL', 'ALDERISIO MICHAEL', 'ALEXANDER AMELIA', 'ALEXANDER BRADY', 'ALEXANDER CHARLES', 'ALEXANDER EVAN', 'ALEXANDER JONAH', 'ALEXANDROV KATHERINE', 'ALFARACHE GABRIELLA', 'ALFONSO CZARINA', 'ALFORD BRYCE', 'ALGER CALEB', 'ALHUSSAIN AHMED', 'ALI ADAM', 'ALI MIR', 'ALICEA PILAR', 'ALIMI YACINE', 'ALIYEV TELMAN', 'ALKEMPER TRISTAN', 'ALKIN ISAAC', 'ALLAMPALLAM MAANAV', 'ALLAN GEORGE', 'ALLEN BRAEDEN', 'ALLEN BRENDAN', 'ALLEN CAMERON', 'ALLEN CHRISTINA', 'ALLEN CLARISSA', 'ALLEN NOA', 'ALLEN PHILIP', 'ALLEN SUSAN', 'ALLGEIER AXEL', 'ALLGEIER PETER', 'ALLI SOFIA', 'ALLISON COLLINS', 'ALLISON JOHN', 'ALLUM CHRISTOPHER', 'ALLUM ISABEL', 'ALLUM ISABEL (IZZY)', 'ALPERSTEIN JONATHAN', 'ALPY ALEXANDRIA', 'ALPY ANASTASIA', 'ALTEN AYAKA', 'ALTER JOSEPH', 'ALTHARDT MICHAEL', 'ALTIRS ALEXANDER', 'ALTMAN JEFF', 'ALTMAN JOHN', 'ALTSCHUL JAMES', 'ALTUVE ALEJANDRO', 'ALVARADO WILLIAM', 'ALVAREZ IAN', 'ALVAREZ JAROD', 'ALVAREZ NICOLAS', 'ALVEAR ANIBAL', 'ALVEAR FELIPE', 'ALVEAR PABLO ANIBAL', 'ALVIDREZ DECLAN', 'ALVIDREZ FRANCESCA', 'ALVIOR JACOB', 'ALVIOR JOSHUA AETHAN', 'AMADOR MARTA', 'AMANN KEITH', 'AMANN SAMUEL', 'AMANN SPENCER', 'AMBALONG JODY', 'AMELI NIK-NIK', 'AMELI NIK-NIK (NICOLE)', 'AMELI SEAN', 'AMER MARIAM', 'AMEZQUITA JUAN', 'AMEZQUITA PABLO', 'AMICE ALEXANDRE', 'AMICO JULIAN', 'AMLING ALEX', 'AMMON BLUE', 'AMOROSO ELIZABETH', 'AMSBAUGH TRAVIS', 'ANA IONUT', 'ANA IONUT (JOHNNY)', 'ANCONA CHRISTOPHER', 'ANDERSEN BENJAMIN (DALLEN)', 'ANDERSEN BENJAMIN (DALLEN) (DALLEN)', 'ANDERSON BRENDAN', 'ANDERSON CALEB', 'ANDERSON CHIRON', 'ANDERSON CHRISTIAN', 'ANDERSON COLE', 'ANDERSON COLTON', 'ANDERSON DAVID', 'ANDERSON ELIAS', 'ANDERSON GRAYDON', 'ANDERSON JR. DANNY', 'ANDERSON MAIA', 'ANDERSON MATHEW', 'ANDERSON NORA', 'ANDERSON PAUL', 'ANDERSON TYLER', 'ANDRADE NICHOLAS', 'ANDREEV ARTHUR', 'ANDRES CHARMAINE', 'ANDRES KATHERINE', 'ANDREWS NATHAN', 'ANDREWS OLIVIA', 'ANDREYENKA HANNA', 'ANDREYENKA YANA', 'ANDRIATIS ALEXANDER', 'ANDRIEUX RYAN', 'ANDROSYUK ALEXANDER', 'ANGEL JONATHAN', 'ANGEN KATIE', 'ANGKAVANICH ANNA', 'ANGLADE ALEXIS', 'ANGLADE JUNIOR RONALD', 'ANGLADE JUNIOR RONALD (RJ)', 'ANGLADE RONALD', 'ANGLIM TOM', 'ANGLIM TOM (TOMMY)', 'ANGLIN BENJAMIN', 'ANSALDO GABRIELE', 'ANTAL CHANDINI', 'ANTAL THOMAS', 'ANTEKEIER AIDAN', 'ANTEKEIER MADELINE', 'ANTEKEIER MADELINE (MADI)', 'ANTHONY LUKE', 'ANTIPAS ALEXA', 'ANTIPAS DEMI', 'ANTIPAS MICHAEL', 'ANTOGNINI LOLA', 'ANTOKHINA ALINA', 'ANTON NATHANIEL', 'ANTONIO MARCKY', 'AO AMELIA', 'APELIAN KATHERINE', 'APLIN CANYON', 'APONTE MONICA', 'APPLEBEE ANDRALYN', 'ARABACI JACK', 'ARANA ABRAHAM', 'ARANA MASSIMO', 'ARAYE NASRO', 'ARCHER KRISTJAN', 'ARDJEVANIDZE DAVID', 'ARFA FARES', 'ARGENZIO VINCENT', 'ARGUELLO CARLOS', 'ARGYRIS JORDAN', 'ARIETA RYAN', 'ARIZA ISAAC', 'ARLINGTON NICHOLAS', 'ARMADA KLARISSA', 'ARMIJO GABRIEL', 'ARMISTEAD JACK RILEY', 'ARMOZA ARIEL', 'ARMSTRONG GARRETT', 'ARMSTRONG JAMES', 'ARMYN GARY', 'ARNAO LORENA', 'ARNAUD LISA', 'ARNECKE LAUREN', 'ARNEMANN JONAS', 'ARNIPALLI HAMSIKA', 'ARNIPALLI SHANVANTH', 'ARNOLD OSCAR', 'AROCHO ANGEL', 'ARONICA BRIAN', 'ARONOV JULIA', 'ARONSON ILANA', 'ARSENA PATRICK', 'ARUTYUNYANTS ART', 'ASCH JACOB', "ASCIONED'ELIA ADAM", 'ASH JULIA', 'ASH MADELINE', 'ASHBY ETHAN',

@@ -314,7 +314,7 @@ input[type="button"]:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 100px;
+  padding-bottom: 0px;
 }
 
 .container4 {
@@ -1115,6 +1115,14 @@ body {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 162, 255, 0.5);
 }
 
+/* CHART.JS */
+canvas {
+  position: relative;
+  right:50px;
+  top:70px;
+}
+
+
 /* MOBILE IPHONE*/
 @media (max-width: 500px) {
   header .logo {
@@ -1291,7 +1299,7 @@ body {
   .frontpagebox {
     position: absolute;
     right: 85px;
-    bottom:-900px;
+    bottom: -900px;
     width: 300px;
     height: 400px;
     background-color: rgba(36, 36, 36, 0.7);

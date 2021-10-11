@@ -45,7 +45,7 @@ def user(usr):
     results = query_results(usr, "all")
     message = "Alpha Version 1.914"
     # gprint(results[5])
-    data = (results[5])  # Sending data to js functions for d3.js
+    data = (results[5])  # Sending data to js functions for chart.js
     # results[5] is a list of dictionaries
 
     return render_template('profile.html', name=usr, results=results, message=message, data=data)
@@ -55,42 +55,48 @@ def user(usr):
 def y14(usr):
     results = query_results(usr, "y14")
     message = "Alpha Version 1.914"
-    return render_template('y14.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('y14.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/<usr>/cadet", methods=["POST", "GET"])
 def cadet(usr):
     results = query_results(usr, "cadet")
     message = "Alpha Version 1.914"
-    return render_template('cadet.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('cadet.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/<usr>/junior", methods=["POST", "GET"])
 def junior(usr):
     results = query_results(usr, "junior")
     message = "Alpha Version 1.914"
-    return render_template('junior.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('junior.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/<usr>/div1", methods=["POST", "GET"])
 def div1(usr):
     results = query_results(usr, "div1")
     message = "Alpha Version 1.914"
-    return render_template('div1.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('div1.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/<usr>/div2", methods=["POST", "GET"])  # NO DIV2 DATA
 def div2(usr):
     results = query_results(usr, "div2")
     message = "Alpha Version 1.914"
-    return render_template('div2.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('div2.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/<usr>/div3", methods=["POST", "GET"])  # NO DIV3 DATA
 def div3(usr):
     results = query_results(usr, "div3")
     message = "Alpha Version 1.914"
-    return render_template('div3.html', name=usr, results=results, message=message)
+    data = (results[5])
+    return render_template('div3.html', name=usr, results=results, message=message, data=data)
 
 
 @application.route("/competition/<comp>", methods=["POST", "GET"])

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script type="text/javascript" src="/static/js/main.js"></script>
     <script type="text/javascript" src="/static/js/jquery.autoscroll.js"></script>
-      
 
   
 </head> 
@@ -38,7 +37,7 @@
             </p>
             <br>
             <br>
-            <a onClick="document.getElementById('container2').scrollIntoView();">Explore</a>
+            <a type='button' onClick="document.getElementById('container2').scrollIntoView();">Scroll Down </a>
             <br>
             <br>
             <br>
@@ -57,19 +56,18 @@
             <div class="text_topfencers">
               <h2> TOP FENCERS </h2>
             </div>
-
-            
             <ul class="data-list" data-autoscroll>
-            {% for s in range(topfencers_names|length) %}
-              <li onclick="window.location.href='/{{topfencers_names[s]}}/'; showloader();"> 
-                {{topfencers_names[s]}}
-                <p>{{topfencers_clubs[s]}}</p>
-
-              </li>
-            {% endfor %}
-              
-              
-            </ul>
+              {% for s in range(topfencers_names|length) %}
+                <li onclick="window.location.href='/{{topfencers_names[s]}}/'; showloader();"> 
+                  {{topfencers_names[s]}}
+                  <p>{{topfencers_clubs[s]}}</p>
+      
+                </li>
+              {% endfor %}
+                
+                
+              </ul>
+          
           </div>
         </section>
 
@@ -99,7 +97,6 @@
     </div>
 
     <div class="container2" id="container2">
-
       
       <img class="parksangyoung" src="/static/img/parksangyoung1.png">
 
@@ -131,7 +128,7 @@
       
     
     </div>
-
+    
     <p>{{message}}</p>
 </body>
 </html>
