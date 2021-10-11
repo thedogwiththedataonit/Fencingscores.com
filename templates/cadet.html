@@ -177,6 +177,12 @@
             <div class="bar"></div>
         </div>
 
+        <canvas id="chart" width="1300" height="400"></canvas>
+        <script>
+            chartCreate('{{data|tojson}}');            
+        
+        </script>
+
         <div class="accordion">
             {% for i in range(results[5]|length) %} 
             <input type="radio" name="select" class="accordion-select" checked />
@@ -274,14 +280,6 @@
             </div> 
             {% endfor %}
         </div> 
-    </div>
-
-    <div class='container4'>
-        <canvas id="chart" width="1250" height="600"></canvas>
-        <script>
-            chartCreate('{{data|tojson}}');            
-        
-        </script>
     </div>
              
 

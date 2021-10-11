@@ -314,7 +314,7 @@ input[type="button"]:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 0px;
+  padding-bottom: 120px;
 }
 
 .container4 {
@@ -622,6 +622,7 @@ input[type="button"]:hover {
   overflow: hidden;
   width: 80%;
   position: relative;
+  top:100px;
 }
 
 .accordion-select {
@@ -1118,8 +1119,8 @@ body {
 /* CHART.JS */
 canvas {
   position: relative;
+  top:30px;
   right:50px;
-  top:70px;
 }
 
 
