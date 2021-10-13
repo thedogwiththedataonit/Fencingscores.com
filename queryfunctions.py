@@ -285,7 +285,7 @@ def top_fencer_names():
         connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster["Names_Cluster"]
     collection = db["Names"]
-    query = {{"$avg":"Pool_win_percentage"}: {"$gt": .90}}
+    query = {"Pool_win_percentage": {"$gt": .90}} #GET AVERAGE OF THISSSSSS AND QUERY
     # ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
     names = list(collection.find(query))
 
@@ -304,5 +304,3 @@ def top_fencer_names():
     # print(club_list)
 
     return (names_list, club_list)
-
-print(top_fencer_names())
