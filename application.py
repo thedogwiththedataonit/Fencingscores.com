@@ -39,7 +39,6 @@ def main():
         return render_template('index.html', topfencers_names=list_top_fencers[0], topfencers_clubs=list_top_fencers[1])
 
 
-# HOW TO CONTINUE URLS / / /
 @application.route("/<usr>/", methods=["POST", "GET"])
 def user(usr):
     results = query_results(usr, "all")

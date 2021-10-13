@@ -622,7 +622,7 @@ input[type="button"]:hover {
   overflow: hidden;
   width: 80%;
   position: relative;
-  top:100px;
+  top: 100px;
 }
 
 .accordion-select {
@@ -1119,10 +1119,21 @@ body {
 /* CHART.JS */
 canvas {
   position: relative;
-  top:30px;
-  right:50px;
+  top: 30px;
+  right: 50px;
 }
 
+.bug_a {
+  display: inline;
+  float: right;
+  vertical-align: bottom;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+.bug_a:hover {
+  color:hsl(32, 100%, 50%);
+}
 
 /* MOBILE IPHONE*/
 @media (max-width: 500px) {

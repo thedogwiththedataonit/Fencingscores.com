@@ -19,19 +19,24 @@ import random
 
 def query_results(usr, cat):
     # print(category)
-    cluster = MongoClient(connection_string, tlsCAFile=certifi.where())  # MAC LINE
+    cluster = MongoClient(
+        connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster["Names_Cluster"]
     collection = db["Names"]
 
     # print(collection.distinct("Name"))
 
     name_document = collection.find_one({"Name": usr})
-    win_percentage = round((name_document.get('Pool_win_percentage') * 100), 2)
+    win_percentage_list = name_document.get('Pool_win_percentage')
+    win_percentage_sum = sum(win_percentage_list)
+    print(win_percentage_sum)
+    win_percentage = (round(((win_percentage_sum) / len(win_percentage_list)),2)) * 100
 
     # FIX HERE, IT SORTS THEN PUSHES TO A ITERATION SORT BY CADET< JUNIOR DIV 1, SHOULD SORT BY DATE AFTER FOR JS CHART
     attended_comps = name_document.get('Competitions')
-    attended_sorted_comps = sorted(attended_comps, key=lambda x: int(x.split(", ")[-1]))
-    #print(attended_sorted_comps)
+    attended_sorted_comps = sorted(
+        attended_comps, key=lambda x: int(x.split(", ")[-1]))
+    # print(attended_sorted_comps)
     attended_cats = name_document.get("Category")
 
     club = name_document.get("Club")
@@ -57,17 +62,16 @@ def query_results(usr, cat):
         # print(category)
         db_comp = cluster[category]
         collection_names_in_category = list(db_comp.list_collection_names())
-        #print(collection_names_in_category)
+        # print(collection_names_in_category)
         for comp_title in attended_sorted_comps:  # list of all competitions
-            #print(comp_title)
-            
+            # print(comp_title)
 
             if ("Cadet" in comp_title) and (comp_title in collection_names_in_category):
 
-                    # try... checks if the competition exists within the cluster
+                # try... checks if the competition exists within the cluster
                 collection_comp = db_comp[comp_title]
 
-                #print(comp_title)
+                # print(comp_title)
                 fencer_document = collection_comp.find_one({"Name": usr})
                 # print(fencer_document)
                 # print("___________________________")
@@ -81,7 +85,7 @@ def query_results(usr, cat):
 
                 # try... checks if the competition exists within the cluster
                 collection_comp = db_comp[comp_title]
-                #print(comp_title)
+                # print(comp_title)
                 fencer_document = collection_comp.find_one({"Name": usr})
                 # print(fencer_document)
                 # print("___________________________")
@@ -95,7 +99,7 @@ def query_results(usr, cat):
                 # try... checks if the competition exists within the cluster
                 collection_comp = db_comp[comp_title]
 
-                #print(comp_title)
+                # print(comp_title)
                 fencer_document = collection_comp.find_one({"Name": usr})
                 # print(fencer_document)
                 # print("___________________________")
@@ -107,12 +111,11 @@ def query_results(usr, cat):
             else:
                 continue
 
-            
     # print(all_comps)
-    #resorting allcomps
-    sorted_all_comps = sorted(all_comps, key=lambda x:attended_sorted_comps.index(x["Title"]))
-    #print(sorted_all_comps)
-
+    # resorting allcomps
+    sorted_all_comps = sorted(
+        all_comps, key=lambda x: attended_sorted_comps.index(x["Title"]))
+    # print(sorted_all_comps)
 
     list_weapons = list(dict.fromkeys(list_weapons))
     if (cat == "all"):
@@ -282,7 +285,7 @@ def top_fencer_names():
         connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster["Names_Cluster"]
     collection = db["Names"]
-    query = {"Pool_win_percentage": {"$gt": .90}}
+    query = {{"$avg":"Pool_win_percentage"}: {"$gt": .90}}
     # ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
     names = list(collection.find(query))
 
@@ -301,3 +304,5 @@ def top_fencer_names():
     # print(club_list)
 
     return (names_list, club_list)
+
+print(top_fencer_names())
