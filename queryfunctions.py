@@ -1,3 +1,4 @@
+from typing import List
 import pymongo
 from pymongo import MongoClient
 import certifi
@@ -30,7 +31,8 @@ def query_results(usr, cat):
     win_percentage_list = name_document.get('Pool_win_percentage')
     win_percentage_sum = sum(win_percentage_list)
     print(win_percentage_sum)
-    win_percentage = (round(((win_percentage_sum) / len(win_percentage_list)),2)) * 100
+    win_percentage = (
+        round(((win_percentage_sum) / len(win_percentage_list)), 2)) * 100
 
     # FIX HERE, IT SORTS THEN PUSHES TO A ITERATION SORT BY CADET< JUNIOR DIV 1, SHOULD SORT BY DATE AFTER FOR JS CHART
     attended_comps = name_document.get('Competitions')
@@ -285,7 +287,11 @@ def top_fencer_names():
         connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster["Names_Cluster"]
     collection = db["Names"]
-    query = {"Pool_win_percentage": {"$gt": .90}} #GET AVERAGE OF THISSSSSS AND QUERY
+
+    # GET AVERAGE OF THISSSSSS AND QUERY
+    query = {"win_per_total": {"$gt": .85}}
+    
+
     # ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
     names = list(collection.find(query))
 
@@ -304,3 +310,23 @@ def top_fencer_names():
     # print(club_list)
 
     return (names_list, club_list)
+
+
+def add_win_percentage(): #EHHHH
+    cluster = MongoClient(
+        connection_string, tlsCAFile=certifi.where())  # MAC LINE
+    db = cluster["Names_Cluster"]
+    collection = db["Names"]
+
+    for document in collection.find():
+        win_per_list = (document.get("Pool_win_percentage"))
+        #print(win_per_list)
+        name = document.get("Name")
+        win_per = round((sum(win_per_list) / len(win_per_list)),2)
+        #print(win_per)
+
+        collection.update_one({"Name":name}, {"$set":{"win_per_total":win_per}})
+
+    return
+
+#print(add_win_percentage())
