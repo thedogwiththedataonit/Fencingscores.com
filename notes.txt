@@ -1,0 +1,4 @@
+Current problems:
+
+The number of competitions for document and the number of win percentages for document doesnt match
+Seems that the win percentage list is 2 index longer than the competition list
