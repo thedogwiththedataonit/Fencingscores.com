@@ -340,7 +340,7 @@ input[type="button"]:hover {
   position: relative;
   width: 300px;
   height: 400px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.719);
   z-index: 10;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(150, 150, 150, 0.7);
@@ -1315,10 +1315,10 @@ canvas {
     bottom: -900px;
     width: 300px;
     height: 400px;
-    background-color: rgba(36, 36, 36, 0.7);
+    background-color: rgba(179, 179, 179, 0.7);
     z-index: 500;
     border-radius: 10px;
-    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 15px 15px 15px rgba(88, 88, 88, 0.7);
     
   }
   .diagonal-box1 {
@@ -1329,4 +1329,6 @@ canvas {
     top: 5%;
     z-index: -5;
   }
+  
+  
 }
