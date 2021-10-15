@@ -289,9 +289,8 @@ def top_fencer_names():
     collection = db["Names"]
 
     # GET AVERAGE OF THISSSSSS AND QUERY
-    query = {"$and": [{"win_per_total": {"$gt": .85}}, {"Competitions.3": {"$exists": True}} ]}
-    
-  
+    query = {"$and": [{"win_per_total": {"$gt": .90}},
+                      {"Competitions.4": {"$exists": True}}]}
 
     # ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
     names = list(collection.find(query))
@@ -313,7 +312,7 @@ def top_fencer_names():
     return (names_list, club_list)
 
 
-def add_win_percentage(): #EHHHH
+def add_win_percentage():  # EHHHH
     cluster = MongoClient(
         connection_string, tlsCAFile=certifi.where())  # MAC LINE
     db = cluster["Names_Cluster"]
@@ -321,13 +320,14 @@ def add_win_percentage(): #EHHHH
 
     for document in collection.find():
         win_per_list = (document.get("Pool_win_percentage"))
-        #print(win_per_list)
+        # print(win_per_list)
         name = document.get("Name")
-        win_per = round((sum(win_per_list) / len(win_per_list)),2)
-        #print(win_per)
+        win_per = round((sum(win_per_list) / len(win_per_list)), 2)
+        # print(win_per)
 
-        collection.update_one({"Name":name}, {"$set":{"win_per_total":win_per}})
+        collection.update_one(
+            {"Name": name}, {"$set": {"win_per_total": win_per}})
 
     return
 
-#print(add_win_percentage())
+# print(add_win_percentage())
