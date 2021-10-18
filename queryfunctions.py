@@ -305,7 +305,7 @@ def top_fencer_names():
     collection = db["Names"]
 
     # GET AVERAGE OF THISSSSSS AND QUERY
-    query = {"$and": [{"win_per_total": {"$gt": .90}},
+    query = {"$and": [{"win_per_total": {"$gt": .95}},
                       {"Competitions.4": {"$exists": True}}]}
 
     # ONLY QUERY A DOCUMENT VALUE FROM A CONDITIONAL
