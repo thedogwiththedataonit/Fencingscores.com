@@ -5,6 +5,7 @@ import certifi
 import gc
 from mongo import connection_string
 import random
+import collections
 
 # Use this script to reference the main application.py file
 
@@ -263,12 +264,27 @@ def comp_data(comp):
     date = values_split[1]
 
     list_of_documents = list(collection.find())
-    # print(list_of_documents)
+    #print(list_of_documents)
 
     # print(list_of_documents[1]["Victory_count"])
-    sort = sorted(list_of_documents, key=lambda k: (
-        k["Victory_count"]), reverse=True)
+    #sort = sorted(list_of_documents, key=lambda k: (k["Victory_count"]), reverse=True)
+    
+    result = collections.defaultdict(list)
+    for r in list_of_documents:
+        result[r["Victory_count"]].append(r)
 
+    result_list = list(result.values())
+
+    victory_sort = sorted(result_list, key=lambda k: (k[1]["Victory_count"]), reverse=True)
+
+    sort=[]
+
+    for l in range(len(victory_sort)):
+        indicator_sort = sorted(victory_sort[l], key=lambda k: (int(k["Indicator"])), reverse=True)
+        for u in indicator_sort:
+            sort.append(u)
+    
+    #print(sort)
     # print("-------------------------")
     # print(sort)
     # for i in sort:
@@ -280,7 +296,7 @@ def comp_data(comp):
             date,
             sort,
             )
-
+#print(comp_data("Cadet Men's Epee July 2, 2019"))
 
 def top_fencer_names():
     cluster = MongoClient(
