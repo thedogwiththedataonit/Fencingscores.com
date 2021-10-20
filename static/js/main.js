@@ -147,7 +147,7 @@ async function chartCreate(data) {
 
         },
           responsive: false,
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
       }
           
   });
