@@ -106,7 +106,7 @@ header .logo {
   margin-right: 40px;
 }
 .text2 h2 {
-  font-size: 1.7em;
+  font-size: 1.6em;
   font-weight: 400;
   color: rgb(255, 255, 255);
   line-height: 1em;
@@ -119,34 +119,34 @@ header .logo {
 }
 
 .text2_loss h2 {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 500;
   color: rgb(255, 255, 255);
   line-height: 1em;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   word-spacing: 10px;
-  margin: 10px;
+  margin: 0px;
   text-align: center;
   background-color: rgb(161, 0, 0);
 }
 .text2_win h2 {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 500;
   color: rgb(255, 255, 255);
   line-height: 1em;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   word-spacing: 10px;
-  margin: 10px;
+  margin: 0px;
   text-align: center;
   background-color: rgb(0, 150, 57);
 }
 
 .text2 a {
-  font-size: 1.2em;
-  font-weight: 150;
+  font-size: 1.4em;
+  font-weight: 350;
   color: rgb(255, 255, 255);
   line-height: 1em;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   word-spacing: 5px;
   margin: 10px;
   text-align: center;
@@ -726,8 +726,8 @@ input[type="button"]:hover {
 .accordion-content {
   background-color: #433877;
   color: #ffffff;
-  height: 350px;
-  margin-bottom: -350px;
+  height: 430px;
+  margin-bottom: -430px;
   margin-right: 0;
   padding: 20px;
   width: 100%;
@@ -1150,7 +1150,7 @@ canvas {
     z-index: 2;
   }
   .text h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 800;
     color: #fff;
     line-height: 1em;
@@ -1160,24 +1160,24 @@ canvas {
   }
 
   .text2_loss h2 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 500;
     color: rgb(255, 255, 255);
     line-height: 1em;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     word-spacing: 10px;
-    margin: 10px;
+    margin: 0px;
     text-align: center;
     background-color: rgb(161, 0, 0);
   }
   .text2_win h2 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 500;
     color: rgb(255, 255, 255);
     line-height: 1em;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     word-spacing: 10px;
-    margin: 10px;
+    margin: 0px;
     text-align: center;
     background-color: rgb(0, 150, 57);
   }
